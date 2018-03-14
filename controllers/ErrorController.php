@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
+use app\common\components\BaseWebController;
 use yii\log\FileTarget;
-use yii\web\Controller;
 
-class ErrorController extends Controller
+class ErrorController extends BaseWebController
 {
     /**
      * 默认报错首页

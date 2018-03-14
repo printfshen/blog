@@ -2,9 +2,9 @@
 
 namespace app\controllers;
 
-use yii\web\Controller;
+use app\common\components\BaseWebController;
 
-class DefaultController extends Controller
+class DefaultController extends BaseWebController
 {
     /**
      * 默认首页
