@@ -1,8 +1,8 @@
 <?php
 
-use app\assets\AppAsset;
+use app\assets\AdminAsset;
 
-AppAsset::register($this);
+AdminAsset::register($this);
 ?>
 
 <?php $this->beginPage(); ?>

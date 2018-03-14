@@ -19,14 +19,16 @@ class WebAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+
     public function registerAssetFiles($view)
     {
-        $release_version = define("RELEASE_VERSION") ? RELEASE_VERSION : time();
+        $release_version = defined("RELEASE_VERSION")?RELEASE_VERSION:time();
         $this->css = [
-
+            'css/bootstrap.css'
         ];
         $this->js = [
-
+            'js/jquery-2.1.1.js',
+            'js/bootstrap.js'
         ];
         parent::registerAssetFiles($view);
     }
