@@ -49,6 +49,14 @@ $config = [
 
     ],
     'params' => $params,
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\AdminModule',
+        ],
+        'web' => [
+            'class' => 'app\modules\web\WebModule',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
@@ -64,7 +72,7 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['127.0.0.1', '192.168.*.*'],
     ];
 }
 

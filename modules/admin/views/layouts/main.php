@@ -4,16 +4,17 @@ use app\assets\AppAsset;
 
 AppAsset::register($this);
 ?>
+
 <?php $this->beginPage(); ?>
-    <!--head-->
-    统一头部
+<!--head-->
+admin头部
 <?php $this->head(); ?>
-    <!--head-->
+<!--head-->
 
 <?php $this->beginBody(); ?>
-    <!--body-->
+<!--body-->
 <?= $content; ?>
-    <!--body-->
+<!--body-->
 <?php $this->endBody(); ?>
 
 

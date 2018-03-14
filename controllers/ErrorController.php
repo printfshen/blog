@@ -16,7 +16,7 @@ class ErrorController extends Controller
         //记录错误信息到文件和数据库
         $this->getError();
 
-        return "错误页面";
+        return $this->render('error');
     }
 
 

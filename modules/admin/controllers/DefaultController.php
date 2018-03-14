@@ -1,17 +1,21 @@
 <?php
 
-namespace app\controllers;
+namespace app\modules\admin\controllers;
 
 use yii\web\Controller;
 
+/**
+ * Default controller for the `admin` module
+ */
 class DefaultController extends Controller
 {
     /**
-     * 默认首页
+     * Renders the index view for the module
      * @return string
      */
     public function actionIndex()
     {
+        $this->layout = 'main';
         return $this->render('index');
     }
 }
