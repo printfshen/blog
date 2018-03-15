@@ -21,8 +21,9 @@ class UrlService
      */
     public function buildAdminUrl($path, $params = [])
     {
+        $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
-        return "/admin" . $path;
+        return $domain_config['admin'] . $path;
     }
 
     /**
@@ -33,8 +34,9 @@ class UrlService
      */
     public function buildWebUrl($path, $params = [])
     {
+        $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
-        return "/web" . $path;
+        return $domain_config['web'] . $path;
     }
 
     /**
@@ -45,8 +47,9 @@ class UrlService
      */
     public function buildWwwUrl($path, $params = [])
     {
+        $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
-        return "/www" . $path;
+        return $domain_config['www'] . $path;
     }
 
     /**

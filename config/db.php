@@ -6,7 +6,7 @@ return [
     'username' => 'root',
     'password' => '',
     'charset' => 'utf8',
-    'tablePrefix' => '', //表前缀
+    'tablePrefix' => '' //表前缀
 
     // Schema cache options (for production environment)
     //'enableSchemaCache' => true,
