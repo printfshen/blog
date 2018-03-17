@@ -24,10 +24,9 @@ class AdminAsset extends AssetBundle
         $release_version = defined("RELEASE_VERSION") ? RELEASE_VERSION : time();
         $this->css = [
             'plugins/bootstrap-3.3.7-dist/css/bootstrap.css',
-
         ];
         $this->js = [
-            'js/jquery-2.1.1.js',
+            'js/jquery-2.2.4.min.js',
             'plugins/bootstrap-3.3.7-dist/js/bootstrap.js',
 
         ];
