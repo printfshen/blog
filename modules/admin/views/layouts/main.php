@@ -1,6 +1,7 @@
 <?php
 
 use app\assets\AdminAsset;
+use app\common\services\UrlService;
 
 AdminAsset::register($this);
 ?>
@@ -29,7 +30,7 @@ AdminAsset::register($this);
             <!--================================-->
             <div class="navbar-header">
                 <a href="index.html" class="navbar-brand">
-                    <img src="img/logo.png" alt="Nifty Logo" class="brand-icon">
+                    <img src="<?= UrlService::buildImgUrl('common/logo.png') ?>" alt="Nifty Logo" class="brand-icon">
                     <div class="brand-title">
                         <span class="brand-text">Nifty</span>
                     </div>
@@ -161,7 +162,7 @@ AdminAsset::register($this);
                                             <a class="media" href="#">
                                                 <div class="media-left">
                                                     <img class="img-circle img-sm" alt="Profile Picture"
-                                                         src="img/profile-photos/9.png">
+                                                         src="<?= UrlService::buildImgUrl('common/profile-photos/9.png') ?>">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-nowrap">Lucy sent you a message</div>
@@ -175,7 +176,7 @@ AdminAsset::register($this);
                                             <a class="media" href="#">
                                                 <div class="media-left">
                                                     <img class="img-circle img-sm" alt="Profile Picture"
-                                                         src="img/profile-photos/3.png">
+                                                         src="<?= UrlService::buildImgUrl('common/profile-photos/3.png') ?>">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-nowrap">Jackson sent you a message</div>
@@ -289,22 +290,28 @@ AdminAsset::register($this);
                                     <ul class="list-unstyled list-inline text-justify">
 
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-2.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-2.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-3.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-3.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-1.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-1.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-4.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-4.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-5.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-5.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="img//thumbs/mega-menu-6.jpg" alt="thumbs">
+                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-6.jpg') ?>"
+                                                 alt="thumbs">
                                         </li>
                                     </ul>
                                     <a href="#" class="btn btn-sm btn-block btn-default">Browse Gallery</a>
@@ -323,7 +330,9 @@ AdminAsset::register($this);
                     <li class="dropdown">
                         <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
                                 <span class="lang-selected">
-                                    <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/united-kingdom.png') ?>"
+                                         alt="English">
                                 </span>
                         </a>
 
@@ -332,7 +341,9 @@ AdminAsset::register($this);
                             <li>
                                 <!--English-->
                                 <a href="#" class="active">
-                                    <img class="lang-flag" src="img/flags/united-kingdom.png" alt="English">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/united-kingdom.png') ?>"
+                                         alt="English">
                                     <span class="lang-id">EN</span>
                                     <span class="lang-name">English</span>
                                 </a>
@@ -340,7 +351,8 @@ AdminAsset::register($this);
                             <li>
                                 <!--France-->
                                 <a href="#">
-                                    <img class="lang-flag" src="img/flags/france.png" alt="France">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/france.png') ?>" alt="France">
                                     <span class="lang-id">FR</span>
                                     <span class="lang-name">Fran&ccedil;ais</span>
                                 </a>
@@ -348,7 +360,8 @@ AdminAsset::register($this);
                             <li>
                                 <!--Germany-->
                                 <a href="#">
-                                    <img class="lang-flag" src="img/flags/germany.png" alt="Germany">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/germany.png') ?>" alt="Germany">
                                     <span class="lang-id">DE</span>
                                     <span class="lang-name">Deutsch</span>
                                 </a>
@@ -356,7 +369,8 @@ AdminAsset::register($this);
                             <li>
                                 <!--Italy-->
                                 <a href="#">
-                                    <img class="lang-flag" src="img/flags/italy.png" alt="Italy">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/italy.png') ?>" alt="Italy">
                                     <span class="lang-id">IT</span>
                                     <span class="lang-name">Italiano</span>
                                 </a>
@@ -364,7 +378,8 @@ AdminAsset::register($this);
                             <li>
                                 <!--Spain-->
                                 <a href="#">
-                                    <img class="lang-flag" src="img/flags/spain.png" alt="Spain">
+                                    <img class="lang-flag"
+                                         src="<?= UrlService::buildImgUrl('common/flags/spain.png') ?>" alt="Spain">
                                     <span class="lang-id">ES</span>
                                     <span class="lang-name">Espa&ntilde;ol</span>
                                 </a>
@@ -380,7 +395,8 @@ AdminAsset::register($this);
                     <li id="dropdown-user" class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="pull-right">
-                                    <!--<img class="img-circle img-user media-object" src="img/profile-photos/1.png" alt="Profile Picture">-->
+<!--                                    <img class="img-circle img-user media-object" src="-->
+                                    <? //=UrlService::buildImgUrl('common/profile-photos/1.png')?><!--" alt="Profile Picture">-->
                                     <i class="demo-pli-male ic-user"></i>
                                 </span>
                             <div class="username hidden-xs">Aaron Chavez</div>
@@ -511,7 +527,8 @@ AdminAsset::register($this);
                                 <div class="list-group bg-trans">
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/2.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/2.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-success badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -522,7 +539,8 @@ AdminAsset::register($this);
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/7.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/7.png') ?>"
                                                  alt="Profile Picture">
                                         </div>
                                         <div class="media-body">
@@ -532,7 +550,8 @@ AdminAsset::register($this);
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/1.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/1.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-info badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -543,7 +562,8 @@ AdminAsset::register($this);
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/4.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/4.png') ?>"
                                                  alt="Profile Picture">
                                         </div>
                                         <div class="media-body">
@@ -553,7 +573,8 @@ AdminAsset::register($this);
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/8.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/8.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-warning badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -564,7 +585,8 @@ AdminAsset::register($this);
                                     </a>
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
-                                            <img class="img-circle img-xs" src="img/profile-photos/9.png"
+                                            <img class="img-circle img-xs"
+                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/9.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-danger badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -786,7 +808,8 @@ AdminAsset::register($this);
                                 <div class="profile-wrap">
                                     <div class="pad-btm">
                                         <span class="label label-success pull-right">New</span>
-                                        <img class="img-circle img-sm img-border" src="img/profile-photos/1.png"
+                                        <img class="img-circle img-sm img-border"
+                                             src="<?= UrlService::buildImgUrl('common/profile-photos/1.png') ?>"
                                              alt="Profile Picture">
                                     </div>
                                     <a href="#profile-nav" class="box-block" data-toggle="collapse"
@@ -852,7 +875,7 @@ AdminAsset::register($this);
 
                                 <!--Menu list item-->
                                 <li class="active-link">
-                                    <a href="index.html">
+                                    <a href="<?= UrlService::buildWwwUrl('dashboard/index') ?>">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>Dashboard</strong>
@@ -862,90 +885,19 @@ AdminAsset::register($this);
 
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= UrlService::buildNullUrl() ?>">
                                         <i class="demo-psi-split-vertical-2"></i>
                                         <span class="menu-title">
-												<strong>Layouts</strong>
+												<strong>账号管理</strong>
 											</span>
                                         <i class="arrow"></i>
                                     </a>
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="layouts-collapsed-navigation.html">Collapsed Navigation</a></li>
-                                        <li><a href="layouts-offcanvas-navigation.html">Off-Canvas Navigation</a></li>
-                                        <li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a>
-                                        </li>
-                                        <li><a href="layouts-offcanvas-revealing-navigation.html">Revealing
-                                                Navigation</a></li>
-                                        <li class="list-divider"></li>
-                                        <li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
-                                        <li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
-                                        <li><a href="layouts-aside-dark-theme.html">Dark version of aside</a></li>
-                                        <li class="list-divider"></li>
-                                        <li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
-                                        <li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="widgets.html">
-                                        <i class="demo-psi-gear-2"></i>
-                                        <span class="menu-title">
-												<strong>Widgets</strong>
-												<span class="pull-right badge badge-warning">24</span>
-											</span>
-                                    </a>
-                                </li>
-
-                                <li class="list-divider"></li>
-
-                                <!--Category name-->
-                                <li class="list-header">Components</li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-boot-2"></i>
-                                        <span class="menu-title">UI Elements</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="ui-buttons.html">Buttons</a></li>
-                                        <li><a href="ui-panels.html">Panels</a></li>
-                                        <li><a href="ui-modals.html">Modals</a></li>
-                                        <li><a href="ui-progress-bars.html">Progress bars</a></li>
-                                        <li><a href="ui-components.html">Components</a></li>
-                                        <li><a href="ui-typography.html">Typography</a></li>
-                                        <li><a href="ui-list-group.html">List Group</a></li>
-                                        <li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-                                        <li><a href="ui-alerts-tooltips.html">Alerts &amp; Tooltips</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-pen-5"></i>
-                                        <span class="menu-title">Forms</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="forms-general.html">General</a></li>
-                                        <li><a href="forms-components.html">Advanced Components</a></li>
-                                        <li><a href="forms-validation.html">Validation</a></li>
-                                        <li><a href="forms-wizard.html">Wizard</a></li>
-                                        <li><a href="forms-file-upload.html">File Upload</a></li>
-                                        <li><a href="forms-text-editor.html">Text Editor</a></li>
-                                        <li><a href="forms-markdown.html">Markdown</a></li>
-
+                                        <li><a href="<?= UrlService::buildWwwUrl('account/index') ?>">账号列表</a></li>
+                                        <li><a href="<?= UrlService::buildWwwUrl('role/index') ?>">角色列表</a></li>
+                                        <li><a href="<?= UrlService::buildWwwUrl('access/index') ?>">权限列表</a></li>
                                     </ul>
                                 </li>
 
@@ -953,185 +905,59 @@ AdminAsset::register($this);
                                 <li>
                                     <a href="#">
                                         <i class="demo-psi-receipt-4"></i>
-                                        <span class="menu-title">Tables</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="tables-static.html">Static Tables</a></li>
-                                        <li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
-                                        <li><a href="tables-datatable.html">Data Tables</a></li>
-                                        <li><a href="tables-footable.html">Foo Tables</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="charts.html">
-                                        <i class="demo-psi-bar-chart"></i>
-                                        <span class="menu-title">Charts</span>
-                                    </a>
-                                </li>
-
-                                <li class="list-divider"></li>
-
-                                <!--Category name-->
-                                <li class="list-header">More</li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-repair"></i>
-                                        <span class="menu-title">Miscellaneous</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="misc-timeline.html">Timeline</a></li>
-                                        <li><a href="misc-calendar.html">Calendar</a></li>
-                                        <li><a href="misc-maps.html">Google Maps</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-mail"></i>
-                                        <span class="menu-title">Email</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="mailbox.html">Inbox</a></li>
-                                        <li><a href="mailbox-message.html">View Message</a></li>
-                                        <li><a href="mailbox-compose.html">Compose Message</a></li>
-                                        <li><a href="mailbox-templates.html">Email Templates<span
-                                                        class="label label-info pull-right">New</span></a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-file-html"></i>
-                                        <span class="menu-title">Pages</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="pages-blank.html">Blank Page</a></li>
-                                        <li><a href="pages-profile.html">Profile</a></li>
-                                        <li><a href="pages-search-results.html">Search Results</a></li>
-                                        <li><a href="pages-faq.html">FAQ</a></li>
-                                        <li class="list-divider"></li>
-                                        <li><a href="pages-404.html">404 Error</a></li>
-                                        <li><a href="pages-500.html">500 Error</a></li>
-                                        <li class="list-divider"></li>
-                                        <li><a href="pages-login.html">Login</a></li>
-                                        <li><a href="pages-register.html">Register</a></li>
-                                        <li><a href="pages-password-reminder.html">Password Reminder</a></li>
-                                        <li><a href="pages-lock-screen.html">Lock Screen</a></li>
-
-                                    </ul>
-                                </li>
-
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-tactic"></i>
-                                        <span class="menu-title">Menu Level</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="#">Second Level Item</a></li>
-                                        <li><a href="#">Second Level Item</a></li>
-                                        <li><a href="#">Second Level Item</a></li>
-                                        <li class="list-divider"></li>
-                                        <li>
-                                            <a href="#">Third Level<i class="arrow"></i></a>
-
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level<i class="arrow"></i></a>
-
-                                            <!--Submenu-->
-                                            <ul class="collapse">
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li class="list-divider"></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                                <li><a href="#">Third Level Item</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-
-
-                                <li class="list-divider"></li>
-
-                                <!--Category name-->
-                                <li class="list-header">Extras</li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-happy"></i>
-                                        <span class="menu-title">Icons Pack</span>
-                                        <i class="arrow"></i>
-                                    </a>
-
-                                    <!--Submenu-->
-                                    <ul class="collapse">
-                                        <li><a href="icons-ionicons.html">Ion Icons</a></li>
-                                        <li><a href="icons-themify.html">Themify</a></li>
-                                        <li><a href="icons-font-awesome.html">Font Awesome</a></li>
-
-                                    </ul>
-                                </li>
-
-                                <!--Menu list item-->
-                                <li>
-                                    <a href="#">
-                                        <i class="demo-psi-medal-2"></i>
                                         <span class="menu-title">
-												PREMIUM ICONS
-												<span class="label label-danger pull-right">BEST</span>
+												<strong>文章管理</strong>
 											</span>
+                                        <i class="arrow"></i>
                                     </a>
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="premium-line-icons.html">Line Icons Pack</a></li>
-                                        <li><a href="premium-solid-icons.html">Solid Icons Pack</a></li>
-
+                                        <li><a href="">文章列表</a></li>
+                                        <li><a href="">分类列表</a></li>
+                                        <li><a href="">标签列表</a></li>
+                                        <li><a href="">评论列表</a></li>
                                     </ul>
                                 </li>
 
                                 <!--Menu list item-->
                                 <li>
-                                    <a href="helper-classes.html">
-                                        <i class="demo-psi-inbox-full"></i>
-                                        <span class="menu-title">Helper Classes</span>
+                                    <a href="#">
+                                        <i class="ion-person-stalker"></i>
+                                        <span class="menu-title">
+												<strong>用户管理</strong>
+											</span>
+                                        <i class="arrow"></i>
                                     </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse">
+                                        <li><a href="">用户列表</a></li>
+                                        <li><a href="">第三方用户</a></li>
+                                    </ul>
                                 </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="#">
+                                        <i class="demo-psi-gear-2"></i>
+                                        <span class="menu-title">
+												<strong>系统管理</strong>
+											</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse">
+                                        <li><a href="">网站设置</a></li>
+                                        <li><a href="">优化推广</a></li>
+                                        <li><a href="">第三方登陆</a></li>
+                                        <li><a href="">友情链接</a></li>
+                                        <li><a href="">文章水印</a></li>
+                                        <li><a href="">屏蔽词</a></li>
+                                    </ul>
+                                </li>
+
                             </ul>
 
 

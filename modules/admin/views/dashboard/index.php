@@ -2,6 +2,7 @@
 
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
+use app\common\services\UrlService;
 
 StaticService::includeAppCssStatic('plugins/nifty-v2.5/demo/plugins/morris-js/morris.min.css', AdminAsset::className());
 StaticService::includeAppJsStatic('plugins/nifty-v2.5/demo/plugins/morris-js/morris.min.js', AdminAsset::className());
@@ -9,25 +10,12 @@ StaticService::includeAppJsStatic('plugins/nifty-v2.5/demo/plugins/morris-js/rap
 
 StaticService::includeAppJsStatic('plugins/nifty-v2.5/demo/js/demo/dashboard.js', AdminAsset::className());
 ?>
-
-
 <div id="content-container">
 
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
-    <div id="page-title">
-        <h1 class="page-header text-overflow">Dashboard</h1>
 
-        <!--Searchbox-->
-        <div class="searchbox">
-            <div class="input-group custom-search-form">
-                <input type="text" class="form-control" placeholder="Search..">
-                <span class="input-group-btn">
-                                <button class="text-muted" type="button"><i class="demo-pli-magnifi-glass"></i></button>
-                            </span>
-            </div>
-        </div>
-    </div>
+    <?php echo Yii::$app->view->renderFile("@app/modules/admin/views/common/tab_common.php")?>
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <!--End page title-->
 
@@ -353,7 +341,8 @@ StaticService::includeAppJsStatic('plugins/nifty-v2.5/demo/js/demo/dashboard.js'
                     <div class="pad-all">
                         <div class="media mar-btm">
                             <div class="media-left">
-                                <img src="img//profile-photos/2.png" class="img-md img-circle" alt="Avatar">
+                                <img src="<?= UrlService::buildImgUrl('common/profile-photos/2.png') ?>"
+                                     class="img-md img-circle" alt="Avatar">
                             </div>
                             <div class="media-body">
                                 <p class="text-lg text-main text-semibold mar-no">Ralph West</p>

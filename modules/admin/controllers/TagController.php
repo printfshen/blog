@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: 沈枫山
- * Date: 2018/3/17
- * Time: 14:59
+ * Date: 2018/3/18
+ * Time: 21:39
  */
 
 namespace app\modules\admin\controllers;
@@ -11,17 +11,14 @@ namespace app\modules\admin\controllers;
 
 use app\modules\admin\controllers\common\BaseController;
 
-class UserController extends BaseController
+class TagController extends BaseController
 {
     /**
-     * 登陆页面
+     * 文章标签 tag
      * @return string
      */
-    public function actionLogin()
+    public function actionIndex()
     {
-        $this->layout = "login_main";
-        return $this->render('login');
+        return $this->render('index');
     }
-
-
 }
