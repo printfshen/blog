@@ -19,7 +19,7 @@ class UrlService
      * @param $path
      * @param array $params
      */
-    public function buildAdminUrl($path, $params = [])
+    public static function buildAdminUrl($path, $params = [])
     {
         $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
@@ -32,7 +32,7 @@ class UrlService
      * @param array $params
      * @return string
      */
-    public function buildWebUrl($path, $params = [])
+    public static function buildWebUrl($path, $params = [])
     {
         $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
@@ -45,7 +45,7 @@ class UrlService
      * @param array $params
      * @return string
      */
-    public function buildWwwUrl($path, $params = [])
+    public static function buildWwwUrl($path, $params = [])
     {
         $domain_config = \Yii::$app->params['domain'];
         $path = Url::toRoute(array_merge([$path], $params));
@@ -58,9 +58,21 @@ class UrlService
      * @param array $params
      * @return string
      */
-    public function buildNullUrl()
+    public static function buildNullUrl()
     {
         return "javascript:void(0);";
+    }
+
+
+    /**
+     * 图片链接
+     * @param $path
+     * @return string
+     */
+    public static function buildImgUrl($path)
+    {
+        $domain_config = \Yii::$app->params['domain'];
+        return $domain_config['www'] .'/images/'. $path;
     }
 
 }

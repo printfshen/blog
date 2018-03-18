@@ -19,15 +19,63 @@ class AdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+
+
+//REQUIRED
+//You must include this in your project.
+
+//RECOMMENDED
+//This category must be included but you may modify which plugins or components which should be included in your project.
+
+//OPTIONAL
+//Optional plugins. You may choose whether to include it in your project or not.
+
+//DEMONSTRATION
+//This is to be removed, used for demonstration purposes only. This category must not be included in your project.
+
+//SAMPLE
+//Some script samples which explain how to initialize plugins or components. This category should not be included in your project.
+
+//Detailed information and more samples can be found in the document.
+
     public function registerAssetFiles($view)
     {
         $release_version = defined("RELEASE_VERSION") ? RELEASE_VERSION : time();
         $this->css = [
-            'plugins/bootstrap-3.3.7-dist/css/bootstrap.css',
+            //Open Sans Font [ OPTIONAL ]
+            'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700',
+            //Bootstrap Stylesheet [ REQUIRED ]
+            'plugins/nifty-v2.5/demo/css/bootstrap.min.css',
+            //Nifty Stylesheet [ REQUIRED ]
+            'plugins/nifty-v2.5/demo/css/nifty.css',
+            ////Nifty Premium Icon [ DEMONSTRATION ]
+            'plugins/nifty-v2.5/demo/css/demo/nifty-demo-icons.min.css',
+            //Demo [ DEMONSTRATION ]
+            'plugins/nifty-v2.5/demo/css/demo/nifty-demo.min.css',
+            //Magic Checkbox [ OPTIONAL ]复选框美化
+            'plugins/nifty-v2.5/demo/plugins/magic-check/css/magic-check.min.css',
+            //Pace - Page Load Progress Par [OPTIONAL] 网页加载进度条
+            'plugins/nifty-v2.5/demo/plugins/pace/pace.min.css',
+
         ];
         $this->js = [
-            'js/jquery-2.2.4.min.js',
-            'plugins/bootstrap-3.3.7-dist/js/bootstrap.js',
+            //Pace - Page Load Progress Par [OPTIONAL] 网页加载进度条
+            'plugins/nifty-v2.5/demo/plugins/pace/pace.min.js',
+            //jQuery [ REQUIRED ]
+            'plugins/nifty-v2.5/demo/js/jquery-2.2.4.min.js',
+            //BootstrapJS [ RECOMMENDED ]
+            'plugins/nifty-v2.5/demo/js/bootstrap.min.js',
+            //NiftyJS [ RECOMMENDED ]
+            'plugins/nifty-v2.5/demo/js/nifty.min.js',
+            //Demo script [ DEMONSTRATION ]
+            'plugins/nifty-v2.5/demo/js/demo/nifty-demo.min.js',
+            //Sparkline [ OPTIONAL ]
+            'plugins/nifty-v2.5/demo/plugins/sparkline/jquery.sparkline.min.js',
+//            //Morris.js [ OPTIONAL ]
+//            'plugins/nifty-v2.5/demo/plugins/morris-js/morris.min.js',
+//            'plugins/nifty-v2.5/demo/plugins/morris-js/raphael-js/raphael.min.js',
+            //Specify page [ SAMPLE ]
+//            'plugins/nifty-v2.5/demo/js/demo/dashboard.js',
 
         ];
         parent::registerAssetFiles($view);
