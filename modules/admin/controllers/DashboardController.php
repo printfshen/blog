@@ -9,7 +9,12 @@
 namespace app\modules\admin\controllers;
 
 
-class DashboardController
+use app\modules\admin\controllers\common\BaseController;
+
+class DashboardController extends BaseController
 {
-    
+    public function actionIndex()
+    {
+        return $this->render('index');
+    }
 }
