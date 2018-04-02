@@ -36,15 +36,29 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sex', 'status'], 'integer'],
-            [['updated_time', 'created_time'], 'required'],
-            [['updated_time', 'created_time'], 'safe'],
-            [['nickname', 'email'], 'string', 'max' => 100],
-            [['mobile', 'login_name'], 'string', 'max' => 20],
-            [['avatar'], 'string', 'max' => 64],
-            [['login_pwd', 'login_salt'], 'string', 'max' => 32],
-            [['login_name'], 'unique'],
+//            [['sex', 'status'], 'integer'],
+//            [['updated_time', 'created_time'], 'required'],
+//            [['updated_time', 'created_time'], 'safe'],
+//            [['nickname', 'email'], 'string', 'max' => 100],
+//            [['mobile', 'login_name'], 'string', 'max' => 20],
+//            [['avatar'], 'string', 'max' => 64],
+//            [['login_pwd', 'login_salt'], 'string', 'max' => 32],
+//            [['login_name'], 'unique'],
+        [['login_pwd', 'login_name'],'required', 'message' => '必填']
         ];
+    }
+
+    public function scenarios()
+    {
+        $parent = parent::scenarios();
+        $parent['login'] = [
+            'login_name',
+            'login_pwd'
+        ];
+        $parent['register'] = [
+            ''
+        ];
+        return $parent;
     }
 
     /**

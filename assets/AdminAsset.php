@@ -38,7 +38,9 @@ class AdminAsset extends AssetBundle
             'plugins/nifty-v2.5/demo/plugins/magic-check/css/magic-check.min.css',
             //Pace - Page Load Progress Par [OPTIONAL] 网页加载进度条
             'plugins/nifty-v2.5/demo/plugins/pace/pace.min.css',
-
+            //图标样式
+            'plugins/nifty-v2.5/demo/plugins/ionicons/css/ionicons.css',
+            'plugins/nifty-v2.5/demo/plugins/font-awesome/css/font-awesome.min.css',
         ];
         $this->js = [
             //Pace - Page Load Progress Par [OPTIONAL] 网页加载进度条
@@ -53,8 +55,6 @@ class AdminAsset extends AssetBundle
             'plugins/nifty-v2.5/demo/js/demo/nifty-demo.min.js',
             //Sparkline [ OPTIONAL ]
             'plugins/nifty-v2.5/demo/plugins/sparkline/jquery.sparkline.min.js',
-            //图标样式
-            'plugins\nifty-v2.5\demo\plugins\ionicons\css\ionicons.css',
         ];
         parent::registerAssetFiles($view);
     }

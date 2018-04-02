@@ -191,7 +191,7 @@ AdminAsset::register($this);
                             <!--Dropdown footer-->
                             <div class="pad-all bord-top">
                                 <a href="#" class="btn-link text-dark box-block">
-                                    <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
+                                    <i class="fa fa-angle-right pull-right"></i>Show All Notifications
                                 </a>
                             </div>
                         </div>
@@ -871,7 +871,7 @@ AdminAsset::register($this);
                             <ul id="mainnav-menu" class="list-group">
 
                                 <!--Category name-->
-                                <li class="list-header">Navigation</li>
+<!--                                <li class="list-header">Navigation</li>-->
 
                                 <!--Menu list item-->
                                 <li class="active-link">
@@ -886,7 +886,7 @@ AdminAsset::register($this);
                                 <!--Menu list item-->
                                 <li>
                                     <a href="<?= UrlService::buildNullUrl() ?>">
-                                        <i class="demo-psi-split-vertical-2"></i>
+                                        <i class="demo-pli-checked-user"></i>
                                         <span class="menu-title">
 												<strong>账号管理</strong>
 											</span>
@@ -934,6 +934,23 @@ AdminAsset::register($this);
                                     <ul class="collapse">
                                         <li><a href="">用户列表</a></li>
                                         <li><a href="">第三方用户</a></li>
+                                    </ul>
+                                </li>
+
+                                <!--Menu list item-->
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-bar-chart"></i>
+                                        <span class="menu-title">
+												<strong>统计管理</strong>
+											</span>
+                                        <i class="arrow"></i>
+                                    </a>
+
+                                    <!--Submenu-->
+                                    <ul class="collapse">
+                                        <li><a href="">用户统计</a></li>
+                                        <li><a href="">其他统计</a></li>
                                     </ul>
                                 </li>
 

@@ -9,6 +9,7 @@
 namespace app\modules\admin\controllers;
 
 
+use app\models\User;
 use app\modules\admin\controllers\common\BaseController;
 
 class UserController extends BaseController
@@ -19,8 +20,22 @@ class UserController extends BaseController
      */
     public function actionLogin()
     {
-        $this->layout = "login_main";
-        return $this->render('login');
+        if (\Yii::$app->request->isGet) {
+            $this->layout = "login_main";
+
+
+            return $this->render('login');
+        }
+
+        $user_model = new User();
+        $user_model->scenario = 'login';
+        $ret = $user_model->load(\Yii::$app->request->post());
+        $user_model->validate();
+        var_dump($user_model->errors);
+
+        $login_name = trim($this->post("login_name", ""));
+        $login_pwd = trim($this->post('login_pwd', ""));
+        var_dump($this->post(null));
     }
 
 

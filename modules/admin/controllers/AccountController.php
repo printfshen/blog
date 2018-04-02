@@ -21,4 +21,14 @@ class AccountController extends BaseController
     {
         return $this->render('index');
     }
+
+
+    /**
+     * 添加和修改
+     * @return string
+     */
+    public function actionSet()
+    {
+        return $this->render('set');
+    }
 }
