@@ -9,6 +9,7 @@
 namespace app\modules\admin\controllers;
 
 
+use app\models\user\User;
 use app\modules\admin\controllers\common\BaseController;
 
 class AccountController extends BaseController
@@ -19,6 +20,7 @@ class AccountController extends BaseController
      */
     public function actionIndex()
     {
+        $list = User::find()->all();
         return $this->render('index');
     }
 

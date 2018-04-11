@@ -3,7 +3,7 @@
 use app\common\services\UrlService;
 
 ?>
-<div id="content-container" class="admin_account_index_ops">
+<div id="content-container" class="admin_access_index_ops">
 
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -59,6 +59,7 @@ use app\common\services\UrlService;
                             </div>
 
                         </div>
+
 
                         <div class="table-responsive">
                             <table class="table table-striped">

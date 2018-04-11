@@ -1,7 +1,7 @@
 <?php
 
 ?>
-<div id="content-container" class="admin_account_set_ops">
+<div id="content-container" class="admin_access_set_ops">
 
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

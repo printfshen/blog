@@ -3,7 +3,7 @@
 use app\common\services\UrlService;
 
 ?>
-<div id="content-container" class="admin_account_index_ops">
+<div id="content-container" class="admin_role_index_ops">
 
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -26,7 +26,6 @@ use app\common\services\UrlService;
                     <div class="panel-body">
 
                         <div class="pad-btm form-inline">
-
                             <div class="row">
                                 <div class="col-sm-8 table-toolbar-left">
                                     <div class="form-group">
@@ -52,12 +51,11 @@ use app\common\services\UrlService;
                                     </div>
                                 </div>
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?= UrlService::buildWwwUrl('account/set') ?>" class="btn btn-purple">
+                                    <a href="<?=UrlService::buildWwwUrl('account/set')?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="table-responsive">

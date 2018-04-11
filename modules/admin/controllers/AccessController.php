@@ -21,4 +21,10 @@ class AccessController extends BaseController
     {
         return $this->render('index');
     }
+
+
+    public function actionSet()
+    {
+        return $this->render('set');
+    }
 }
