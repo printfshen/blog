@@ -9,7 +9,8 @@
 namespace app\modules\admin\controllers;
 
 
-use app\models\User;
+use app\models\form\admin_user_login_form;
+use app\models\user\User;
 use app\modules\admin\controllers\common\BaseController;
 
 class UserController extends BaseController
@@ -23,15 +24,18 @@ class UserController extends BaseController
         if (\Yii::$app->request->isGet) {
             $this->layout = "login_main";
 
-
             return $this->render('login');
         }
 
-        $user_model = new User();
+        $data_form = $this->post(null);
+
+        $user_model = new admin_user_login_form();
         $user_model->scenario = 'login';
-        $ret = $user_model->load(\Yii::$app->request->post());
-        $user_model->validate();
-        var_dump($user_model->errors);
+        $user_model->load(['admin_user_login_form' => $data_form]);
+        if (!$user_model->validate()) {
+            var_dump($user_model->errors);
+            exit;
+        }
 
         $login_name = trim($this->post("login_name", ""));
         $login_pwd = trim($this->post('login_pwd', ""));

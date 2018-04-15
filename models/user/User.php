@@ -67,4 +67,36 @@ class User extends \yii\db\ActiveRecord
             'created_time' => 'Created Time',
         ];
     }
+
+    /**
+     * 根据login_name查询出 用户信息
+     * @param $login_name
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public function getUserByLogin_name($login_name)
+    {
+        return static::find()->where(['login_name' => $login_name])->one();
+    }
+
+    /**
+     * 校验密码
+     * @param $password
+     * @return bool
+     */
+    public function verifyPassword($password)
+    {
+        return $this->login_pwd == $this->getSaltPassword($password);
+    }
+
+    /**
+     * 用户密码加密  规则 md5(password + md5(salt))
+     * @param $password
+     * @return string
+     */
+    public function getSaltPassword($password)
+    {
+        return md5(md5($password) . md5($this->login_salt));
+    }
+
+
 }

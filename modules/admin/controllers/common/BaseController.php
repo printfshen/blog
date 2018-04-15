@@ -32,6 +32,7 @@ class BaseController extends BaseWebController
 
     public function beforeAction($action)
     {
+
         return true;
     }
 
