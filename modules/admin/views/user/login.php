@@ -3,7 +3,7 @@
 use app\assets\AdminAsset;
 use app\common\services\StaticService;
 use app\common\services\UrlService;
-use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 StaticService::includeAppJsStatic('js/admin/user/login.js', AdminAsset::className());
 ?>
@@ -22,15 +22,17 @@ StaticService::includeAppJsStatic('js/admin/user/login.js', AdminAsset::classNam
                     <h3 class="h4 mar-no">Account Login</h3>
                     <p class="text-muted">Sign In to your account</p>
                 </div>
-                <?=Html::beginForm('', 'post', [])?>
-                    <div class="form-group">
-                        <?= Html::input('text', 'login_name', '', ['class' => 'form-control', 'placeholder' => 'name', 'autofocus' => 'autofocus']) ?>
-                    </div>
-                    <div class="form-group">
-                        <?= Html::input('password', 'login_pwd', '', ['class' => 'form-control', 'placeholder' => 'password']) ?>
-                    </div>
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
-                <?=Html::endForm();?>
+                <?php $form = ActiveForm::begin(['action' => '', 'method' => 'post']) ?>
+                <div class="form-group">
+                    <?= $form->field($model, 'login_name')->label('')
+                        ->textInput(['class' => 'form-control', 'placeholder' => 'name', 'autofocus' => 'autofocus']) ?>
+                </div>
+                <div class="form-group">
+                    <?= $form->field($model, 'login_pwd')->label('')
+                        ->passwordInput(['class' => 'form-control', 'placeholder' => 'password', ]) ?>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Sign In</button>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
