@@ -9,7 +9,8 @@
 namespace app\modules\admin\controllers;
 
 
-use app\models\form\admin_user_login_form;
+use app\common\services\UrlService;
+use app\models\user\User;
 use app\modules\admin\controllers\common\BaseController;
 
 class UserController extends BaseController
@@ -21,28 +22,36 @@ class UserController extends BaseController
     public function actionLogin()
     {
         $this->layout = "login_main";
-        $user_model = new admin_user_login_form();
         if (\Yii::$app->request->isGet) {
-            return $this->render('login', [
-                'model' => $user_model
-            ]);
-
-        }
-
-        $data_form = $this->post(null);
-        $user_model->scenario = 'login';
-        $user_model->load(['admin_user_login_form' => $data_form]);
-
-        if (!$user_model->validate()) {
-            return $this->render('login', [
-                'model' => $user_model
-            ]);
+            return $this->render('login');
         }
 
         $login_name = trim($this->post("login_name", ""));
         $login_pwd = trim($this->post('login_pwd', ""));
-        var_dump($this->post(null));
 
+
+        if (!preg_match("/^[1-9a-zA-Z_-]{4,20}$/", $login_name)) {
+            return $this->renderJS('请填写登陆账号', UrlService::buildAdminUrl('/user/login'));
+        }
+
+        if (mb_strlen($login_pwd, 'utf-8') <= 0) {
+            return $this->renderJS('请填写密码', UrlService::buildAdminUrl('/user/login'));
+        }
+
+        $user_model = new User();
+        $user_info = $user_model->getInfo(['login_name' => $login_name]);
+        if (!$user_info) {
+            return $this->renderJS('用户不存在', UrlService::buildAdminUrl('/user/login'));
+        }
+
+        if (!$user_info->verifyPassword($login_pwd)) {
+            return $this->renderJS('密码不正确,请重试', UrlService::buildAdminUrl('/user/login'));
+        }
+
+        //todo  设置登陆状态
+        $this->setLoginStatus($user_info);
+
+        return $this->redirect( UrlService::buildAdminUrl("/") );
     }
 
 

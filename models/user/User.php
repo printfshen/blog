@@ -23,6 +23,50 @@ use Yii;
 class User extends \yii\db\ActiveRecord
 {
     /**
+     * 查询一条数据
+     * @param $condition
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public function getInfo($condition)
+    {
+        return static::find()->where($condition)->one();
+    }
+
+    /**
+     * 生成加密盐
+     * @param int $length
+     */
+    public function setSalt($length = 16)
+    {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        $salt = '';
+        for ($i = 0; $i < $length; $i++) {
+            $salt .= $chars[mt_rand(0, strlen($chars) - 1)];
+        }
+        $this->login_salt = $salt;
+    }
+
+    /**
+     * 校验密码
+     * @param $password
+     * @return bool
+     */
+    public function verifyPassword($password)
+    {
+        return $this->login_pwd == $this->getSaltPassword($password);
+    }
+
+    /**
+     * 用户密码加密  规则 md5(password + md5(salt))
+     * @param $password
+     * @return string
+     */
+    public function getSaltPassword($password)
+    {
+        return md5(md5($password) . md5($this->login_salt));
+    }
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -66,36 +110,6 @@ class User extends \yii\db\ActiveRecord
             'updated_time' => 'Updated Time',
             'created_time' => 'Created Time',
         ];
-    }
-
-    /**
-     * 根据login_name查询出 用户信息
-     * @param $login_name
-     * @return array|null|\yii\db\ActiveRecord
-     */
-    public function getUserByLogin_name($login_name)
-    {
-        return static::find()->where(['login_name' => $login_name])->one();
-    }
-
-    /**
-     * 校验密码
-     * @param $password
-     * @return bool
-     */
-    public function verifyPassword($password)
-    {
-        return $this->login_pwd == $this->getSaltPassword($password);
-    }
-
-    /**
-     * 用户密码加密  规则 md5(password + md5(salt))
-     * @param $password
-     * @return string
-     */
-    public function getSaltPassword($password)
-    {
-        return md5(md5($password) . md5($this->login_salt));
     }
 
 

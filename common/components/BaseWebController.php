@@ -147,4 +147,15 @@ class BaseWebController extends Controller
         ]);
     }
 
+    /**
+     * web端统一返回js提示
+     * @param $msg
+     * @param string $url
+     * @return string
+     */
+    protected  function renderJS($msg,$url = "/")
+    {
+        return $this->renderPartial("@app/views/common/js", ['msg' => $msg, 'location' => $url]);
+    }
+
 }
