@@ -51,8 +51,16 @@ class UserController extends BaseController
         //todo  设置登陆状态
         $this->setLoginStatus($user_info);
 
-        return $this->redirect( UrlService::buildAdminUrl("/") );
+        return $this->redirect(UrlService::buildAdminUrl("/"));
     }
 
 
+    /**
+     * 退出登陆
+     */
+    public function actionLoginOut()
+    {
+        $this->removeSession($this->auth_session_name);
+        $this->redirect(UrlService::buildAdminUrl('/user/login'));
+    }
 }

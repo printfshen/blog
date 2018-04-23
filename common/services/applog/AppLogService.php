@@ -11,6 +11,7 @@ namespace app\common\services\applog;
 
 use app\common\services\UtilService;
 use app\models\log\ErrorLog;
+use app\models\user\AppAccessLog;
 
 class AppLogService
 {
@@ -31,7 +32,7 @@ class AppLogService
         if (!empty($_SERVER['HTTP_USER_AGENT']))
             $model_error_log->ua = $_SERVER['HTTP_USER_AGENT'];
 
-        if ($error){
+        if ($error) {
             $model_error_log->err_code = $error->getCode();
 
             if (isset($error->statusCode))
@@ -44,5 +45,34 @@ class AppLogService
 
             $model_error_log->save();
         }
+    }
+
+
+    /**
+     * 用户操作日志
+     * @param int $uid
+     */
+    public static function addAppLog($uid = 0)
+    {
+        $get_params = \Yii::$app->request->get();
+        $post_params = \Yii::$app->request->post();
+        if (isset($post_params['summary'])) {
+            unset($post_params['summary']);
+        }
+
+        $target_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : "";
+
+        $referer = \Yii::$app->request->getReferrer();
+        $ua = \Yii::$app->request->getUserAgent();
+
+        $access_log = new AppAccessLog();
+        $access_log->uid = $uid;
+        $access_log->referer_url = $referer ? $referer : "";
+        $access_log->target_url = $target_url;
+        $access_log->query_params = json_encode(array_merge($get_params, $post_params));
+        $access_log->ua = $ua ? $ua : "";
+        $access_log->ip = UtilService::getIp();
+        $access_log->created_time = date("Y-m-d H:i:s");
+        return $access_log->save(0);
     }
 }

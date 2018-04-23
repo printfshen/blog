@@ -10,6 +10,8 @@ namespace app\modules\admin\controllers\common;
 
 
 use app\common\components\BaseWebController;
+use app\common\services\applog\AppLogService;
+use app\common\services\UrlService;
 use app\models\user\User;
 
 class BaseController extends BaseWebController
@@ -17,7 +19,7 @@ class BaseController extends BaseWebController
     //分页数
     protected $page_size = 25;
     //session name
-    protected $auth_session_name = "admin_auth";
+    protected $auth_session_name = "admin_auth_session";
     //当前用户信息
     protected $current_user = null;
     //平台加密盐
@@ -46,9 +48,17 @@ class BaseController extends BaseWebController
             return true;
         }
 
-        if (!$is_login){
-
+        if (!$is_login) {
+            if (\Yii::$app->request->isAjax) {
+                return $this->renderJson([], "未登录,请返回用户中心", -302);
+            } else {
+                return $this->redirect(UrlService::buildAdminUrl('/user/login'));
+            }
         }
+
+        //admin 日志记录
+        AppLogService::addAppLog($this->current_user['uid']);
+
         return true;
     }
 
