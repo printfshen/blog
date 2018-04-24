@@ -41,7 +41,7 @@ class AppLogService
             if (method_exists($error, "getName"))
                 $model_error_log->err_name = $error->getName();
 
-            $model_error_log->created_time = date("Y-m-d H:i:s");
+            $model_error_log->created_time = time();
 
             $model_error_log->save();
         }
@@ -72,7 +72,7 @@ class AppLogService
         $access_log->query_params = json_encode(array_merge($get_params, $post_params));
         $access_log->ua = $ua ? $ua : "";
         $access_log->ip = UtilService::getIp();
-        $access_log->created_time = date("Y-m-d H:i:s");
+        $access_log->created_time = time();
         return $access_log->save(0);
     }
 }

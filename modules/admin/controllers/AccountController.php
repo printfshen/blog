@@ -70,4 +70,15 @@ class AccountController extends BaseController
         return $this->render('set');
     }
 
+
+    /**
+     * 详细信息
+     * @return string
+     */
+    public function actionInfo()
+    {
+
+        return $this->render('info');
+    }
+
 }
