@@ -30,9 +30,15 @@ var admin_account_set_ops = {
             var login_pwd_target = $(".admin_account_set_ops input[name=login_pwd]");
             var login_pwd = login_pwd_target.val();
 
-            var status = $("input[name=status]").val();
+            // var status = $("input[name=status]").val();
 
-            
+            var clickCheckbox = document.querySelector(".js-check-chick"),
+            clickButton = document.querySelector(".js-check-chick-button");
+
+            clickButton.addEventListener("click", function () {
+                alert(clickCheckbox.checked)
+            })
+
 
         })
     }
