@@ -10,6 +10,7 @@ namespace app\modules\admin\controllers;
 
 
 use app\common\services\ConstantMapService;
+use app\common\services\UrlService;
 use app\models\user\User;
 use app\modules\admin\controllers\common\BaseController;
 
@@ -77,8 +78,21 @@ class AccountController extends BaseController
      */
     public function actionInfo()
     {
+        $uid = intval($this->get('uid', 0));
+        $reback_url = UrlService::buildWebUrl("/account/index");
+        if (!$uid) {
+            return $this->redirect($reback_url);
+        }
 
-        return $this->render('info');
+        $info = User::findOne(['uid' => $uid]);
+        if (!$info) {
+            return $this->redirect($reback_url);
+        }
+
+
+        return $this->render('info', [
+            'info' => $info
+        ]);
     }
 
 }

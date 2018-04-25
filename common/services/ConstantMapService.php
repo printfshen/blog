@@ -12,6 +12,11 @@ namespace app\common\services;
 class ConstantMapService
 {
     public static $status_default = -1;
+    public static $default_avatar = 'default_avatar';
+    public static $default_syserror = '系统繁忙，请稍后再试';
+    public static $default_error = "参数错误";
+    public static $default_nodata = '暂无数据';
+    public static $default_no_auth = "暂无权限";
 
     public static $status_mapping = [
         '-1' => '请选择状态',

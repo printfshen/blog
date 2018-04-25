@@ -45,19 +45,19 @@ StaticService::includeAppJsStatic('js/admin/user/login.js', AdminAsset::classNam
             <div class="demo-loading"><i class="psi-repeat-2"></i></div>
             <img class="demo-chg-bg bg-trans active"
                  src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-trns.jpg') ?>" alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-1.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-1.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-2.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-2.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-3.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-3.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-4.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-4.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-5.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-5.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-6.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-6.jpg') ?>"
                  alt="Background Image">
-            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-img-7.jpg') ?>"
+            <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-7.jpg') ?>"
                  alt="Background Image">
         </div>
     </div>

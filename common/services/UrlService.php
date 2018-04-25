@@ -72,7 +72,7 @@ class UrlService
     public static function buildImgUrl($path)
     {
         $domain_config = \Yii::$app->params['domain'];
-        return $domain_config['www'] .'/images/'. $path;
+        return $domain_config['www'] .'/images'. $path;
     }
 
 }

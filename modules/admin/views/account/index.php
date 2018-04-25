@@ -97,7 +97,7 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                         </td>
 
                                         <td>
-                                            <a href="<?= UrlService::buildAdminUrl('/account/info') ?>">
+                                            <a href="<?= UrlService::buildAdminUrl('/account/info', ['uid'=>$_item['uid']]) ?>">
                                                 <i class="fa fa-eye fa-lg"></i>
                                             </a>
                                             <a class="m-l" href="<?= UrlService::buildAdminUrl('/account/set') ?>">

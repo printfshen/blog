@@ -30,14 +30,14 @@ use app\common\services\UrlService;
                             <div class="form-group">
                                 <div class="col-lg-2 text-center">
                                     <img class="img-circle circle-border"
-                                         src="http://taichi.cn/images/common/qrcode.jpg"
+                                         src="<?=UrlService::buildImgUrl('/common/profile-photos/default.png')?>"
                                          width="100px" height="100px">
                                 </div>
                                 <div class="col-lg-3 text-center">
-                                    <p class="m-t">账号：沈枫山</p>
-                                    <p class="m-t">姓名：沈枫山</p>
-                                    <p>手机：15252329288</p>
-                                    <p>邮箱：111@qq.com</p>
+                                    <p class="m-t">账号：<?=$info['login_name']?></p>
+                                    <p class="m-t">姓名：<?=$info['nickname']?></p>
+                                    <p>手机：<?=$info['mobile']?></p>
+                                    <p>邮箱：<?=$info['email']?></p>
                                 </div>
                             </div>
 

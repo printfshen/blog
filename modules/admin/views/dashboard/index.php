@@ -341,7 +341,7 @@ StaticService::includeAppJsStatic('plugins/nifty-v2.5/demo/js/demo/dashboard.js'
                     <div class="pad-all">
                         <div class="media mar-btm">
                             <div class="media-left">
-                                <img src="<?= UrlService::buildImgUrl('common/profile-photos/2.png') ?>"
+                                <img src="<?= UrlService::buildImgUrl('/common/profile-photos/2.png') ?>"
                                      class="img-md img-circle" alt="Avatar">
                             </div>
                             <div class="media-body">

@@ -30,7 +30,7 @@ AdminAsset::register($this);
             <!--================================-->
             <div class="navbar-header">
                 <a href="index.html" class="navbar-brand">
-                    <img src="<?= UrlService::buildImgUrl('common/logo.png') ?>" alt="Nifty Logo" class="brand-icon">
+                    <img src="<?= UrlService::buildImgUrl('/common/logo.png') ?>" alt="Nifty Logo" class="brand-icon">
                     <div class="brand-title">
                         <span class="brand-text">Nifty</span>
                     </div>
@@ -162,7 +162,7 @@ AdminAsset::register($this);
                                             <a class="media" href="#">
                                                 <div class="media-left">
                                                     <img class="img-circle img-sm" alt="Profile Picture"
-                                                         src="<?= UrlService::buildImgUrl('common/profile-photos/9.png') ?>">
+                                                         src="<?= UrlService::buildImgUrl('/common/profile-photos/9.png') ?>">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-nowrap">Lucy sent you a message</div>
@@ -176,7 +176,7 @@ AdminAsset::register($this);
                                             <a class="media" href="#">
                                                 <div class="media-left">
                                                     <img class="img-circle img-sm" alt="Profile Picture"
-                                                         src="<?= UrlService::buildImgUrl('common/profile-photos/3.png') ?>">
+                                                         src="<?= UrlService::buildImgUrl('/common/profile-photos/3.png') ?>">
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="text-nowrap">Jackson sent you a message</div>
@@ -290,27 +290,27 @@ AdminAsset::register($this);
                                     <ul class="list-unstyled list-inline text-justify">
 
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-2.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-2.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-3.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-3.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-1.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-1.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-4.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-4.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-5.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-5.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                         <li class="pad-btm">
-                                            <img src="<?= UrlService::buildImgUrl('common/thumbs/mega-menu-6.jpg') ?>"
+                                            <img src="<?= UrlService::buildImgUrl('/common/thumbs/mega-menu-6.jpg') ?>"
                                                  alt="thumbs">
                                         </li>
                                     </ul>
@@ -331,7 +331,7 @@ AdminAsset::register($this);
                         <a id="demo-lang-switch" class="lang-selector dropdown-toggle" href="#" data-toggle="dropdown">
                                 <span class="lang-selected">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/united-kingdom.png') ?>"
+                                         src="<?= UrlService::buildImgUrl('/common/flags/united-kingdom.png') ?>"
                                          alt="English">
                                 </span>
                         </a>
@@ -342,7 +342,7 @@ AdminAsset::register($this);
                                 <!--English-->
                                 <a href="#" class="active">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/united-kingdom.png') ?>"
+                                         src="<?= UrlService::buildImgUrl('/common/flags/united-kingdom.png') ?>"
                                          alt="English">
                                     <span class="lang-id">EN</span>
                                     <span class="lang-name">English</span>
@@ -352,7 +352,7 @@ AdminAsset::register($this);
                                 <!--France-->
                                 <a href="#">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/france.png') ?>" alt="France">
+                                         src="<?= UrlService::buildImgUrl('/common/flags/france.png') ?>" alt="France">
                                     <span class="lang-id">FR</span>
                                     <span class="lang-name">Fran&ccedil;ais</span>
                                 </a>
@@ -361,7 +361,7 @@ AdminAsset::register($this);
                                 <!--Germany-->
                                 <a href="#">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/germany.png') ?>" alt="Germany">
+                                         src="<?= UrlService::buildImgUrl('/common/flags/germany.png') ?>" alt="Germany">
                                     <span class="lang-id">DE</span>
                                     <span class="lang-name">Deutsch</span>
                                 </a>
@@ -370,7 +370,7 @@ AdminAsset::register($this);
                                 <!--Italy-->
                                 <a href="#">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/italy.png') ?>" alt="Italy">
+                                         src="<?= UrlService::buildImgUrl('/common/flags/italy.png') ?>" alt="Italy">
                                     <span class="lang-id">IT</span>
                                     <span class="lang-name">Italiano</span>
                                 </a>
@@ -379,7 +379,7 @@ AdminAsset::register($this);
                                 <!--Spain-->
                                 <a href="#">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('common/flags/spain.png') ?>" alt="Spain">
+                                         src="<?= UrlService::buildImgUrl('/common/flags/spain.png') ?>" alt="Spain">
                                     <span class="lang-id">ES</span>
                                     <span class="lang-name">Espa&ntilde;ol</span>
                                 </a>
@@ -396,7 +396,7 @@ AdminAsset::register($this);
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                                 <span class="pull-right">
 <!--                                    <img class="img-circle img-user media-object" src="-->
-                                    <? //=UrlService::buildImgUrl('common/profile-photos/1.png')?><!--" alt="Profile Picture">-->
+                                    <? //=UrlService::buildImgUrl('/common/profile-photos/1.png')?><!--" alt="Profile Picture">-->
                                     <i class="demo-pli-male ic-user"></i>
                                 </span>
                             <div class="username hidden-xs">Aaron Chavez</div>
@@ -528,7 +528,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/2.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/2.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-success badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -540,7 +540,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/7.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/7.png') ?>"
                                                  alt="Profile Picture">
                                         </div>
                                         <div class="media-body">
@@ -551,7 +551,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/1.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/1.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-info badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -563,7 +563,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/4.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/4.png') ?>"
                                                  alt="Profile Picture">
                                         </div>
                                         <div class="media-body">
@@ -574,7 +574,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/8.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/8.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-warning badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -586,7 +586,7 @@ AdminAsset::register($this);
                                     <a href="#" class="list-group-item">
                                         <div class="media-left pos-rel">
                                             <img class="img-circle img-xs"
-                                                 src="<?= UrlService::buildImgUrl('common/profile-photos/9.png') ?>"
+                                                 src="<?= UrlService::buildImgUrl('/common/profile-photos/9.png') ?>"
                                                  alt="Profile Picture">
                                             <i class="badge badge-danger badge-stat badge-icon pull-left"></i>
                                         </div>
@@ -809,7 +809,7 @@ AdminAsset::register($this);
                                     <div class="pad-btm">
                                         <span class="label label-success pull-right">New</span>
                                         <img class="img-circle img-sm img-border"
-                                             src="<?= UrlService::buildImgUrl('common/profile-photos/1.png') ?>"
+                                             src="<?= UrlService::buildImgUrl('/common/profile-photos/1.png') ?>"
                                              alt="Profile Picture">
                                     </div>
                                     <a href="#profile-nav" class="box-block" data-toggle="collapse"

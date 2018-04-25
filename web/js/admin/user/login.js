@@ -6,9 +6,7 @@ var user_login_ops = {
     },
     eventBind: function () {
         var that = this;
-        $(".cls-content .btn").click(function () {
 
-        })
     },
     //login 登陆页面背景图JS
     bg_image: function () {
