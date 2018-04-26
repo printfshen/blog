@@ -5,6 +5,16 @@ var common_ops = {
     },
     eventBind:function () {
         var that = this;
+
+
+    },
+    tip:function (msg, target) {
+        layer.tips(msg, target, {
+            tips: [3, "#75717a"]
+        });
+        $("html, body").animate({
+            scrollTop:target.offset().top - 10
+        }, 100);
     }
 };
 $(document).ready(function () {

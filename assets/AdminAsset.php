@@ -55,6 +55,9 @@ class AdminAsset extends AssetBundle
             'plugins/nifty-v2.5/demo/js/demo/nifty-demo.min.js',
             //Sparkline [ OPTIONAL ]
             'plugins/nifty-v2.5/demo/plugins/sparkline/jquery.sparkline.min.js',
+            'plugins/layer-v3.1.1/layer.js',
+            'js/admin/common.js'
+
         ];
         parent::registerAssetFiles($view);
     }
