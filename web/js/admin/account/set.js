@@ -54,6 +54,17 @@ var admin_account_set_ops = {
             }
 
 
+
+            // $.ajax({
+            //     url:"",
+            //     data:"",
+            //     type:"",
+            //     dataType:"",
+            //     success:function (res) {
+            //         alert(res)
+            //     }
+            // })
+
         });
     }
 };

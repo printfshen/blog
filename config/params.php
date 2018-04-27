@@ -6,4 +6,8 @@ return [
         'admin' => 'http://shenfengshan.cn/admin',
         'web' => 'http://shenfengshan.cn/web',
     ],
+
+    'upload' => [
+        'avatar' => '/uploads/avatar',
+    ],
 ];

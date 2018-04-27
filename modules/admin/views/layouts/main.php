@@ -4,6 +4,7 @@ use app\assets\AdminAsset;
 use app\common\services\UrlService;
 
 AdminAsset::register($this);
+$upload_config = Yii::$app->params['upload'];
 ?>
 <?php $this->beginPage(); ?>
 <!DOCTYPE html>
@@ -361,7 +362,8 @@ AdminAsset::register($this);
                                 <!--Germany-->
                                 <a href="#">
                                     <img class="lang-flag"
-                                         src="<?= UrlService::buildImgUrl('/common/flags/germany.png') ?>" alt="Germany">
+                                         src="<?= UrlService::buildImgUrl('/common/flags/germany.png') ?>"
+                                         alt="Germany">
                                     <span class="lang-id">DE</span>
                                     <span class="lang-name">Deutsch</span>
                                 </a>
@@ -449,7 +451,7 @@ AdminAsset::register($this);
 
                             <!-- Dropdown footer -->
                             <div class="pad-all text-right">
-                                <a href="<?=UrlService::buildAdminUrl('/user/login-out')?>" class="btn btn-primary">
+                                <a href="<?= UrlService::buildAdminUrl('/user/login-out') ?>" class="btn btn-primary">
                                     <i class="demo-pli-unlock"></i> Logout
                                 </a>
                             </div>
@@ -871,7 +873,7 @@ AdminAsset::register($this);
                             <ul id="mainnav-menu" class="list-group">
 
                                 <!--Category name-->
-<!--                                <li class="list-header">Navigation</li>-->
+                                <!--                                <li class="list-header">Navigation</li>-->
 
                                 <!--Menu list item-->
                                 <li class="active-link">
@@ -1548,12 +1550,12 @@ AdminAsset::register($this);
 <!--===================================================-->
 <!-- END SETTINGS -->
 
-
-</body>
+<div class="hidden_layout_warp hide">
+    <input type="hidden" name="upload_config" value='<?= json_encode($upload_config); ?>'/>
+</div>
 <?php $this->endBody(); ?>
+</body>
 </html>
-
-
 <?php $this->endPage(); ?>
 
 
