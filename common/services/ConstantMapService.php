@@ -13,6 +13,7 @@ class ConstantMapService
 {
     public static $status_default = -1;
     public static $default_avatar = 'default_avatar';
+    public static $default_pwd = "******";
     public static $default_syserror = '系统繁忙，请稍后再试';
     public static $default_error = "参数错误";
     public static $default_nodata = '暂无数据';

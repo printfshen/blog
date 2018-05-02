@@ -24,7 +24,7 @@ var common_ops = {
         return domain + upload_config[bucket] + "/" + img_key;
     },
     alert: function (msg, cb) {
-        layer.layer(msg, {
+        layer.alert(msg, {
             yes: function (index) {
                 if (typeof cb == "function") {
                     cb();
@@ -59,6 +59,9 @@ var common_ops = {
             scrollTop: target.offset().top - 10
         }, 100);
     },
+    msg: function (msg) {
+        layer.msg(msg);
+    }
 };
 $(document).ready(function () {
     common_ops.init();

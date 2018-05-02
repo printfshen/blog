@@ -44,7 +44,7 @@ StaticService::includeAppJsStatic('js/admin/user/login.js', AdminAsset::classNam
         <div id="demo-bg-list">
             <div class="demo-loading"><i class="psi-repeat-2"></i></div>
             <img class="demo-chg-bg bg-trans active"
-                 src="<?= UrlService::buildImgUrl('common/bg-img/thumbs/bg-trns.jpg') ?>" alt="Background Image">
+                 src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-trns.jpg') ?>" alt="Background Image">
             <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-1.jpg') ?>"
                  alt="Background Image">
             <img class="demo-chg-bg" src="<?= UrlService::buildImgUrl('/common/bg-img/thumbs/bg-img-2.jpg') ?>"

@@ -68,7 +68,62 @@ class AccountController extends BaseController
      */
     public function actionSet()
     {
-        return $this->render('set');
+        if (\Yii::$app->request->isGet) {
+            return $this->render('set');
+        }
+        $nickname = trim($this->post("nickname", ""));
+        $mobile = trim($this->post("mobile", 0));
+        $email = trim($this->post("email", ""));
+        $login_name = trim($this->post("login_name", ""));
+        $login_pwd = $this->post("login_pwd", "");
+        $status = intval($this->post("status", 1));
+        $date_now = time();
+        $uid = intval($this->post("uid", 0));
+
+        if (!preg_match('/^[a-zA-Z0-9\x{4e00}-\x{9fa5}]{2,20}$/u', $nickname)) {
+            return $this->renderJson([], "昵称只支持中文、字母、数字的组合，2-20个字符", -1);
+        }
+        if (!preg_match('/^1[345678][0-9]{9}$/', $mobile)) {
+            return $this->renderJson([], '请输入符合要求的手机号码', -1);
+        }
+        if (!preg_match('/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/', $email)) {
+            return $this->renderJson([], '请输入符合要求的邮箱', -1);
+        }
+        if (!preg_match('/^[a-zA-z][a-zA-Z0-9]{4,20}$/', $login_name)) {
+            return $this->renderJson([], '登陆名只支持字母开头和数字的组合，2-20个字符', -1);
+        }
+        if (mb_strlen($login_pwd, "utf-8") < 5 || mb_strlen($login_pwd, "utf-8") > 20) {
+            return $this->renderJson([], "请输入5-20位的密码", -1);
+        }
+        if (!in_array($status, [0, 1])) {
+            return $this->renderJson([], ConstantMapService::$default_error, -1);
+        }
+        $has_in = User::find()->where(['login_name' => $login_name])->count();
+        if ($has_in) {
+            return $this->renderJson([], "登陆名已经存在，请重试", -1);
+        }
+        $info = User::findOne(['uid' => $uid]);
+        if ($info) {
+            $user_model = $info;
+        } else {
+            $user_model = new User();
+            $user_model->setSalt();
+            $user_model->created_time = $date_now;
+        }
+
+        $user_model->nickname = $nickname;
+        $user_model->mobile = $mobile;
+        $user_model->email = $email;
+        $user_model->sex = 0;
+        $user_model->avatar = ConstantMapService::$default_avatar;
+        $user_model->login_name = $login_name;
+        if ($login_pwd != ConstantMapService::$default_pwd) {
+            $user_model->getSaltPassword($login_pwd);
+        }
+        $user_model->status = $status;
+        $user_model->updated_time = $date_now;
+
+        var_dump($user_model);
     }
 
 

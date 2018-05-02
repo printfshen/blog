@@ -58,7 +58,7 @@ StaticService::includeAppJsStatic("/js/admin/account/set.js", AdminAsset::classN
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="">login_pwd：</label>
                             <div class="col-md-9">
-                                <input type="text" name="login_pwd" class="form-control" placeholder="login_pwd">
+                                <input type="password" name="login_pwd" class="form-control" placeholder="login_pwd">
                             </div>
                         </div>
 
