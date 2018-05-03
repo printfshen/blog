@@ -22,6 +22,10 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+    public function setPassword( $password ) {
+
+        $this->login_pwd = $this->getSaltPassword($password);
+    }
     /**
      * 查询一条数据
      * @param $condition
