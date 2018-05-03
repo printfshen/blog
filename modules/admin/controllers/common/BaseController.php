@@ -42,7 +42,6 @@ class BaseController extends BaseWebController
      */
     public function beforeAction($action)
     {
-        echo 111;exit;
         $is_login = $this->checkLoginStatus();
 
         if (in_array($action->getUniqueId(), $this->allowAllAction)) {
