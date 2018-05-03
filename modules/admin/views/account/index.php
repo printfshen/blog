@@ -20,7 +20,6 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
     <!--Page content-->
     <!--===================================================-->
     <div id="page-content">
-
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel">
@@ -97,18 +96,19 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                         </td>
 
                                         <td>
-                                            <a href="<?= UrlService::buildAdminUrl('/account/info', ['uid'=>$_item['uid']]) ?>">
+                                            <a href="<?= UrlService::buildAdminUrl('/account/info', ['uid' => $_item['uid']]) ?>">
                                                 <i class="fa fa-eye fa-lg"></i>
                                             </a>
-                                            <a class="m-l" href="<?= UrlService::buildAdminUrl('/account/set') ?>">
+                                            <a class="m-l"
+                                               href="<?= UrlService::buildAdminUrl('/account/set', ['uid' => $_item['uid']]) ?>">
                                                 <i class="fa fa-edit fa-lg"></i>
                                             </a>
                                             <?php if ($_item['status']): ?>
-                                                <a class="m-l remove" href="javascript:void(0);" data="">
+                                                <a class="m-l remove" href="javascript:void(0);" data="<?=$_item['uid']?>">
                                                     <i class="fa fa-trash fa-lg"></i>
                                                 </a>
                                             <?php else: ?>
-                                                <a class="m-l recover" href="javascript:void(0);" data="">
+                                                <a class="m-l recover" href="javascript:void(0);" data="<?=$_item['uid']?>">
                                                     <i class="fa fa-rotate-left fa-lg"></i>
                                                 </a>
                                             <?php endif; ?>
