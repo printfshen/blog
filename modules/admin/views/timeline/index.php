@@ -3,12 +3,10 @@
 use app\common\services\UrlService;
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
-use app\common\services\ConstantMapService;
 
-StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::className());
-
+StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::className());
 ?>
-<div id="content-container" class="admin_account_index_ops">
+<div id="content-container" class="admin_timeline_index_ops">
 
     <!--Page Title-->
     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -20,13 +18,13 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
     <!--Page content-->
     <!--===================================================-->
     <div id="page-content">
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel">
                     <div class="panel-heading">
-                        <h3 class="panel-title">账号列表</h3>
+                        <h3 class="panel-title">Timeline</h3>
                     </div>
-
                     <div class="panel-body">
 
                         <div class="pad-btm form-inline">
@@ -61,7 +59,7 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
 
                                 </form>
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?= UrlService::buildWwwUrl('account/set') ?>" class="btn btn-purple">
+                                    <a href="<?= UrlService::buildWwwUrl('timeline/set') ?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>
@@ -74,35 +72,30 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                 <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">login_name</th>
-                                    <th class="text-center">name</th>
-                                    <th class="text-center">mobile</th>
-                                    <th class="text-center">email</th>
+                                    <th class="text-center">title</th>
+                                    <th class="text-center">content</th>
+                                    <th class="text-center">icon</th>
                                     <th class="text-center">status</th>
+                                    <th class="text-center">date</th>
                                     <th class="text-center">operation</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php if ($list): ?>
+                                <?php if (!$list): ?>
                                     <!---正常数据显示-->
                                     <?php foreach ($list as $_item): ?>
                                         <tr class="text-center">
-                                            <td><?= $_item['uid'] ?></td>
-                                            <td><?= $_item['login_name'] ?></td>
-                                            <td><?= $_item['nickname'] ?></td>
-                                            <td><?= $_item['mobile'] ?></td>
-                                            <td><?= $_item['email'] ?></td>
-
+                                            <td><?= $_item['id'] ?></td>
+                                            <td><?= $_item['title'] ?></td>
+                                            <td><?= $_item['content'] ?></td>
+                                            <th class="text-center"><?= $_item['icon'] ?></th>
                                             <td>
                                                 <?= ConstantMapService::$state_mapping[$_item['status']] ?>
                                             </td>
-
+                                            <td><?= date("Y-m-d H:i:s", $_item['date']) ?></td>
                                             <td>
-                                                <a href="<?= UrlService::buildAdminUrl('/account/info', ['uid' => $_item['uid']]) ?>">
-                                                    <i class="fa fa-eye fa-lg"></i>
-                                                </a>
                                                 <a class="m-l"
-                                                   href="<?= UrlService::buildAdminUrl('/account/set', ['uid' => $_item['uid']]) ?>">
+                                                   href="<?= UrlService::buildAdminUrl('/timeline/set', ['uid' => $_item['uid']]) ?>">
                                                     <i class="fa fa-edit fa-lg"></i>
                                                 </a>
                                                 <?php if ($_item['status']): ?>
@@ -120,6 +113,7 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                         </tr>
                                     <?php endforeach; ?>
                                 <?php else: ?>
+
                                     <!---没有数据显示---->
                                     <tr class="text-center">
                                         <td colspan="6">No matching records found</td>
@@ -133,7 +127,6 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                         <?php echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/pagination.php"); ?>
 
                     </div>
-
                 </div>
             </div>
         </div>
@@ -141,6 +134,5 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
     </div>
     <!--===================================================-->
     <!--End page content-->
-
 
 </div>

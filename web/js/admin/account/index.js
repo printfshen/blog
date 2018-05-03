@@ -6,7 +6,7 @@ var admin_account_index_ops = {
     eventBind: function () {
         var that = this;
 
-        that.index_search_sub();
+        common_ops.index_search_sub();
         $(".remove").click(function () {
             that.ops("remove", $(this).attr("data"));
         });
@@ -16,11 +16,7 @@ var admin_account_index_ops = {
         })
 
     },
-    index_search_sub: function () {
-        $('#index_search_form .search').click(function () {
-            $("#index_search_form").submit();
-        })
-    },
+
     ops: function (act, id) {
         var callback = {
             "ok": function () {

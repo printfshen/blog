@@ -61,7 +61,12 @@ var common_ops = {
     },
     msg: function (msg) {
         layer.msg(msg);
-    }
+    },
+    index_search_sub: function () {
+        $('#index_search_form .search').click(function () {
+            $("#index_search_form").submit();
+        })
+    },
 };
 $(document).ready(function () {
     common_ops.init();
