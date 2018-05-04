@@ -12,7 +12,7 @@ namespace app\common\services;
 
 use yii\helpers\Url;
 
-class UrlService
+class UrlService extends BaseService
 {
     /**
      * 构建Admin模块所有链接
@@ -63,6 +63,18 @@ class UrlService
         return "javascript:void(0);";
     }
 
+    /**
+     * 上传 图片链接
+     * @param $bucket
+     * @param $file_key
+     * @return string
+     */
+    public static function buildPicUrl($bucket, $file_key)
+    {
+        $domain_config = \Yii::$app->params['domain'];
+        $upload_config = \Yii::$app->params['upload'];
+        return $domain_config['www'] . $upload_config[$bucket] . "/" . $file_key;
+    }
 
     /**
      * 图片链接
@@ -72,7 +84,7 @@ class UrlService
     public static function buildImgUrl($path)
     {
         $domain_config = \Yii::$app->params['domain'];
-        return $domain_config['www'] .'/images'. $path;
+        return $domain_config['www'] . '/images' . $path;
     }
 
 }

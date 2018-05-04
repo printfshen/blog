@@ -16,7 +16,6 @@ var admin_account_index_ops = {
         })
 
     },
-
     ops: function (act, id) {
         var callback = {
             "ok": function () {
@@ -41,8 +40,7 @@ var admin_account_index_ops = {
             },
             "cancel": null
         }
-        common_ops.confirm((act == "remove") ? "确定删除？" : "确定恢复？", callback)
-        ;
+        common_ops.confirm((act == "remove") ? "确定删除？" : "确定恢复？", callback);
     }
 };
 $(document).ready(function () {

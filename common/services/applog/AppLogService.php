@@ -9,11 +9,12 @@
 namespace app\common\services\applog;
 
 
+use app\common\services\BaseService;
 use app\common\services\UtilService;
 use app\models\log\ErrorLog;
 use app\models\user\AppAccessLog;
 
-class AppLogService
+class AppLogService extends BaseService
 {
     /**
      * 报错 写入数据库

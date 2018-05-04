@@ -10,7 +10,7 @@
 namespace app\common\services;
 
 
-class StaticService
+class StaticService extends BaseService
 {
     /**
      * 引入JS 文件

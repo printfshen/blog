@@ -2,11 +2,16 @@
 var admin_timeline_set_ops = {
     init: function () {
         this.eventBind();
+        common_ops.initpPluploadUploader(
+            'cover_btn_big',
+            common_ops.buildWww('/upload/plupload'),
+            {bucket: $('input[name=bucket]').val()},
+            true
+        )
     },
     eventBind: function () {
         var that = this;
         that.datepicker($("#admin_timeline_date"));
-
 
     },
     datepicker: function (obj) {
@@ -19,7 +24,6 @@ var admin_timeline_set_ops = {
             today: "今天",
             clear: "清除"
         };
-
         obj.datepicker({
             autoclose: true,          //自动关闭
             beforeShowDay: $.noop,    //在显示日期之前调用的函数

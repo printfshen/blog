@@ -7,6 +7,8 @@ use app\assets\AdminAsset;
 StaticService::includeAppJsStatic("/plugins/nifty-v2.5/demo/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js", AdminAsset::className());
 StaticService::includeAppCssStatic("/plugins/nifty-v2.5/demo/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css", AdminAsset::className());
 
+StaticService::includeAppJsStatic("/plugins/plupload/plupload.full.min.js", AdminAsset::className());
+
 StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::className());
 
 ?>
@@ -52,7 +54,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                                 <label class="col-md-3 control-label" for="">date：</label>
                                 <div class="col-md-9">
                                     <div class="input-group">
-                                        <input id="admin_timeline_date" type="text" class="form-control" readonly >
+                                        <input id="admin_timeline_date" type="text" class="form-control" readonly>
                                         <span class="input-group-addon"><i class="demo-pli-clock"></i></span>
                                     </div>
                                 </div>
@@ -61,7 +63,21 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                             <div class="form-group">
                                 <label class="col-md-3 control-label">image：</label>
                                 <div class="col-md-9">
-
+                                    <div id="photos_area" class="photos_area">
+                                        <?php $info = [];
+                                        if ($info): ?>
+                                            <?php if ($info['book_pic']): ?>
+                                                <?php foreach ($info['book_pic'] as $_item_pic): ?>
+                                                    <span class='item' id=''>
+                                        <a class='picture_delete'>×</a>
+                                        <input type=hidden name='pics[]' value='<?= $_item_pic ?>'><img src='' alt=''/>
+                                    </span>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                        <input type="hidden" name="bucket" value="timeline"/>
+                                        <a class="cover_btn" id="cover_btn_big"><span>+</span></a>
+                                    </div>
                                 </div>
                             </div>
 
