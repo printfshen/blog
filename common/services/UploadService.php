@@ -80,7 +80,7 @@ class UploadService extends BaseService
         $model_image = new Images();
         $model_image->bucket = $bucket;
         $model_image->file_key = $file_key;
-        $model_image->created_time = date("Y-m-d H:i:s");
+        $model_image->created_time = time();
         return $model_image->save(0);
     }
 }

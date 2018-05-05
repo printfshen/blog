@@ -69,6 +69,37 @@ class TimelineController extends BaseController
         if (\Yii::$app->request->isGet) {
             return $this->render("set");
         }
+        $id = intval($this->post("id", 0));
+        $title = trim($this->post("title", ""));
+        $date = strtotime($this->post("date", date("Y-m-d", time())));
+        $content = trim($this->post("content", ""));
+        $pics = $this->post("pics", "");
+        $pic = !empty($pics) ? $pics[0] : "";
+        $status = intval($this->post("status", 0));
+        $date_now = time();
 
+        if (!$content) {
+            return $this->renderJson([], "请输入内容", -1);
+        }
+        if (count($pics) > 1) {
+            return $this->renderJson([], "图片最多上传一张图片，请删除多余的图片提交!", -1);
+        }
+
+        if ($id) {
+            $timeline_model = Timeline::findOne(['id' => $id]);
+        } else {
+            $timeline_model = new Timeline();
+        }
+
+        $timeline_model->title = $title;
+        $timeline_model->content = $content;
+        $timeline_model->pic = $pic;
+        $timeline_model->icon = "";
+        $timeline_model->status = $status;
+        $timeline_model->date = $date;
+        $timeline_model->updated_time = $date_now;
+        $timeline_model->created_time = $date_now;
+        $timeline_model->save(0);
+        return $this->renderJson([], "操作成功");
     }
 }

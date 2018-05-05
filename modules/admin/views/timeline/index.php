@@ -3,6 +3,7 @@
 use app\common\services\UrlService;
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
+use app\common\services\ConstantMapService;
 
 StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::className());
 ?>
@@ -81,7 +82,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php if (!$list): ?>
+                                <?php if ($list): ?>
                                     <!---正常数据显示-->
                                     <?php foreach ($list as $_item): ?>
                                         <tr class="text-center">
@@ -95,17 +96,17 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
                                             <td><?= date("Y-m-d H:i:s", $_item['date']) ?></td>
                                             <td>
                                                 <a class="m-l"
-                                                   href="<?= UrlService::buildAdminUrl('/timeline/set', ['uid' => $_item['uid']]) ?>">
+                                                   href="<?= UrlService::buildAdminUrl('/timeline/set', ['id' => $_item['id']]) ?>">
                                                     <i class="fa fa-edit fa-lg"></i>
                                                 </a>
                                                 <?php if ($_item['status']): ?>
                                                     <a class="m-l remove" href="javascript:void(0);"
-                                                       data="<?= $_item['uid'] ?>">
+                                                       data="<?= $_item['id'] ?>">
                                                         <i class="fa fa-trash fa-lg"></i>
                                                     </a>
                                                 <?php else: ?>
                                                     <a class="m-l recover" href="javascript:void(0);"
-                                                       data="<?= $_item['uid'] ?>">
+                                                       data="<?= $_item['id'] ?>">
                                                         <i class="fa fa-rotate-left fa-lg"></i>
                                                     </a>
                                                 <?php endif; ?>

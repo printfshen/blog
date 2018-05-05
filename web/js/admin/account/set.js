@@ -7,8 +7,6 @@ var admin_account_set_ops = {
         var that = this;
 
         that.admin_account_set_save_data();
-
-
     },
     admin_account_set_save_data: function () {
         var clickCheckbox = document.querySelector(".toggle-switch"),
@@ -19,10 +17,8 @@ var admin_account_set_ops = {
                 common_ops.alert("正在处理!!请不要重复提交");
             }
 
-            var status = 0;
-            if (clickCheckbox.checked) {
-                status = 1;
-            }
+            var status = clickCheckbox.checked ? 1 : 0;
+
             var uid = $(".admin_account_set_ops input[name=uid]").val();
 
             var nickname_target = $(".admin_account_set_ops input[name=nickname]");
@@ -58,6 +54,7 @@ var admin_account_set_ops = {
             }
             if (login_pwd.length < 5 || login_pwd.length > 20) {
                 common_ops.tip("请输入5-20位的密码", login_pwd_target);
+                return
             }
             btn_target.addClass("disabled");
             $.ajax({
