@@ -70,7 +70,10 @@ class AccountController extends BaseController
     {
         if (\Yii::$app->request->isGet) {
             $uid = intval($this->get('uid', 0));
-            $info = User::findOne(['uid' => $uid]);
+            $info = [];
+            if ($uid){
+                $info = User::findOne(['uid' => $uid]);
+            }
             return $this->render('set', [
                 'info' => $info
             ]);

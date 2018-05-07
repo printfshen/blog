@@ -67,7 +67,14 @@ class TimelineController extends BaseController
     public function actionSet()
     {
         if (\Yii::$app->request->isGet) {
-            return $this->render("set");
+            $id = intval($this->get("id", 0));
+            $info = [];
+            if ($id) {
+                $info = Timeline::find()->where(["id" => $id])->one();
+            }
+            return $this->render("set", [
+                'info' => $info
+            ]);
         }
         $id = intval($this->post("id", 0));
         $title = trim($this->post("title", ""));
@@ -100,6 +107,33 @@ class TimelineController extends BaseController
         $timeline_model->updated_time = $date_now;
         $timeline_model->created_time = $date_now;
         $timeline_model->save(0);
+        return $this->renderJson([], "操作成功");
+    }
+
+
+    public function actionOps()
+    {
+        $act = $this->post("act", "");
+        $id = $this->post("id", 0);
+        if (!$id) {
+            return $this->renderJSON([], "请选择要操作的时间轴", -1);
+        }
+
+        if (!in_array($act, ['remove', 'recover'])) {
+            return $this->renderJSON([], "操作有误，请重试", -1);
+        }
+
+        $info = Timeline::find()->where(['id' => $id])->one();
+        if (!$info) {
+            return $this->renderJSON([], "指定时间轴不存在", -1);
+        }
+        if ($act == "remove"){
+            $info->status = 0;
+        } else {
+            $info->status = 1;
+        }
+        $info->updated_time = time();
+        $info->save(0);
         return $this->renderJson([], "操作成功");
     }
 }

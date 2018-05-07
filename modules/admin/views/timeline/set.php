@@ -37,7 +37,8 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="title">title：</label>
                             <div class="col-md-9">
-                                <input type="text" id="title" name="title" class="form-control" placeholder="title">
+                                <input type="text" id="title" name="title" class="form-control" placeholder="title"
+                                       value="<?= $info ? $info['title'] : "" ?>">
                             </div>
                         </div>
 
@@ -47,7 +48,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                                 <div class="input-group">
                                     <input id="admin_timeline_date" name="date" type="text" class="form-control"
                                            readonly
-                                           value="<?= date("Y-m-d") ?>">
+                                           value="<?= $info ? date('Y-m-d', $info['date']) : date("Y-m-d") ?>">
                                     <span class="input-group-addon"><i class="demo-pli-clock"></i></span>
                                 </div>
                             </div>
@@ -57,15 +58,15 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                             <label class="col-md-3 control-label">image：</label>
                             <div class="col-md-9">
                                 <div id="photos_area" class="photos_area">
-                                    <?php $info = [];
+                                    <?php
                                     if ($info): ?>
-                                        <?php if ($info['book_pic']): ?>
-                                            <?php foreach ($info['book_pic'] as $_item_pic): ?>
-                                                <span class='item' id=''>
+                                        <?php if ($info['pic']): ?>
+                                            <span class='item' id=''>
                                         <a class='picture_delete'>×</a>
-                                        <input type=hidden name='pics[]' value='<?= $_item_pic ?>'><img src='' alt=''/>
+                                        <input type=hidden name='pics[]' value='<?= $info['pic'] ?>'>
+                                                <img src='<?= UrlService::buildPicUrl("timeline", $info['pic']); ?>'
+                                                     alt=''/>
                                     </span>
-                                            <?php endforeach; ?>
                                         <?php endif; ?>
                                     <?php endif; ?>
                                     <input type="hidden" name="bucket" value="timeline"/>
@@ -78,7 +79,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                             <div class="col-md-3 control-label">content：</div>
                             <div class="col-md-9">
                                         <textarea placeholder="content" id="content" rows="13"
-                                                  class="form-control"></textarea>
+                                                  class="form-control"><?= $info['content'] ?></textarea>
                             </div>
                         </div>
 
@@ -86,7 +87,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                             <div class="col-md-3 control-label">status：</div>
                             <div class="col-md-9 control-label text-left">
                                 <input id="demo-online-status-checkbox" class="toggle-switch" type="checkbox"
-                                       checked="">
+                                    <?= $info ? ($info['status'] == 1 ? "checked" : "") : "checked"; ?>>
                                 <label for="demo-online-status-checkbox"></label>
                             </div>
                         </div>

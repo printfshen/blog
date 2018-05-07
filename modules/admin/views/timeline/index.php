@@ -93,7 +93,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
                                             <td>
                                                 <?= ConstantMapService::$state_mapping[$_item['status']] ?>
                                             </td>
-                                            <td><?= date("Y-m-d H:i:s", $_item['date']) ?></td>
+                                            <td><?= date("Y-m-d", $_item['date']) ?></td>
                                             <td>
                                                 <a class="m-l"
                                                    href="<?= UrlService::buildAdminUrl('/timeline/set', ['id' => $_item['id']]) ?>">
