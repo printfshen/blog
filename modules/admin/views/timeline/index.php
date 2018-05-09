@@ -30,35 +30,14 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
 
                         <div class="pad-btm form-inline">
                             <div class="row">
-                                <form action="" method="post" id="index_search_form">
-                                    <div class="col-sm-8 table-toolbar-left">
-                                        <div class="form-group">
-                                            <div class="form-group">
-                                                <select name="status" class="form-control inline">
-                                                    <?php foreach ($status_mapping as $_status => $_title): ?>
-                                                        <option <?= $_status == $search_conditions['status'] ? 'selected' : ''; ?>
-                                                                value="<?= $_status ?>"><?= $_title ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <input type="text" name="mix_kw" placeholder="请输入内容"
-                                                           class="form-control"
-                                                           value="<?= $search_conditions['mix_ky'] ?>">
-                                                    <input type="hidden" name="p"
-                                                           value="<?= $search_conditions['p'] ?>">
-                                                    <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-primary search">
-                                                        <i class="fa fa-search"></i>Search
-                                                    </button>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                </form>
+                                <!--搜索页面已被封装到统一模板文件中-->
+                                <?php echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/search_index.php", [
+                                    'status_mapping' => $status_mapping,
+                                    'search_conditions' => $search_conditions,
+                                    'form_action' => UrlService::buildAdminUrl('/timeline/index')
+                                ]); ?>
+
                                 <div class="col-sm-4 table-toolbar-right">
                                     <a href="<?= UrlService::buildWwwUrl('timeline/set') ?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
@@ -125,7 +104,10 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
                         </div>
 
                         <!--分页代码已被封装到统一模板文件中-->
-                        <?php echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/pagination.php"); ?>
+                        <?php echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/pagination.php", [
+                                'pages' => $pages,
+                                'url' => '/timeline/index'
+                        ]); ?>
 
                     </div>
                 </div>

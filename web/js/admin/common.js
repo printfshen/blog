@@ -93,7 +93,7 @@ var common_ops = {
                         var callback = null;
                         if (res.code == 200) {
                             callback = function () {
-                                window.location.href = window.location.href;
+                                location.reload();
                             }
                         }
                         common_ops.alert(res.msg, callback);

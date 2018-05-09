@@ -915,10 +915,10 @@ $upload_config = Yii::$app->params['upload'];
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="">文章列表</a></li>
-                                        <li><a href="">分类列表</a></li>
-                                        <li><a href="">标签列表</a></li>
-                                        <li><a href="">评论列表</a></li>
+                                        <li><a href="<?=UrlService::buildWwwUrl('category/index')?>">分类列表</a></li>
+                                        <li><a href="<?=UrlService::buildWwwUrl('article/index')?>">文章列表</a></li>
+                                        <li><a href="<?=UrlService::buildWwwUrl('tag/index')?>">标签列表</a></li>
+                                        <li><a href="<?=UrlService::buildWwwUrl('comment/index')?>">评论列表</a></li>
                                     </ul>
                                 </li>
                                 <!--Menu list item-->

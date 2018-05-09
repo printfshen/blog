@@ -17,7 +17,7 @@ use app\models\user\User;
 class BaseController extends BaseWebController
 {
     //分页数
-    protected $page_size = 25;
+    protected $page_size = 1;
     //session name
     protected $auth_session_name = "admin_auth_session";
     //当前用户信息

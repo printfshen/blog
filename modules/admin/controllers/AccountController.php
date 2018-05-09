@@ -22,10 +22,10 @@ class AccountController extends BaseController
      */
     public function actionIndex()
     {
-        $status = $this->post('status', '-1');
-        $mix_kw = $this->post('mix_kw', '');
-        $p = $this->post('p');
-        $p = $p ? $p : 0;
+        $status = $this->get('status', '-1');
+        $mix_kw = $this->get('mix_kw', '');
+        $p = $this->get('p', 1);
+        $p = (($p < 1) ? 0 : $p);
 
         $query = User::find();
         if ($status > ConstantMapService::$status_default) {
@@ -71,7 +71,7 @@ class AccountController extends BaseController
         if (\Yii::$app->request->isGet) {
             $uid = intval($this->get('uid', 0));
             $info = [];
-            if ($uid){
+            if ($uid) {
                 $info = User::findOne(['uid' => $uid]);
             }
             return $this->render('set', [
@@ -178,7 +178,7 @@ class AccountController extends BaseController
         if (!$info) {
             return $this->renderJSON([], "指定账号不存在", -1);
         }
-        if ($act == "remove"){
+        if ($act == "remove") {
             $info->status = 0;
         } else {
             $info->status = 1;
