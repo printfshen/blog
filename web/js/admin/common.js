@@ -186,6 +186,23 @@ var common_ops = {
             weekStart: 0              //星期几是开始
         });
     },
+    select2Input: function (obj) {
+        obj.select2({
+            language: "zh-CN",
+            width: '100%'
+        })
+    },
+    tagsInput: function (obj) {
+        obj.tagsInput({
+            width: 'auto',
+            height: 34,
+            onAddTag: function (tag) {
+            },
+            onRemoveTag: function (tag) {
+            }
+        });
+    },
+
 
 };
 $(document).ready(function () {

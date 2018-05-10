@@ -17,10 +17,10 @@ var admin_timeline_set_ops = {
             common_ops.removePluploadPic($(this));
         });
 
-        that.admin_timeline_set_sub();
+        that.admin_timeline_set_save();
 
     },
-    admin_timeline_set_sub: function () {
+    admin_timeline_set_save: function () {
         var clickCheckbox = document.querySelector(".toggle-switch"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {

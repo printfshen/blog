@@ -6,9 +6,9 @@ var admin_account_set_ops = {
     eventBind: function () {
         var that = this;
 
-        that.admin_account_set_save_data();
+        that.admin_account_set_save();
     },
-    admin_account_set_save_data: function () {
+    admin_account_set_save: function () {
         var clickCheckbox = document.querySelector(".toggle-switch"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {

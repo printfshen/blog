@@ -82,7 +82,7 @@ class TimelineController extends BaseController
         $content = trim($this->post("content", ""));
         $pics = $this->post("pics", "");
         $pic = !empty($pics) ? $pics[0] : "";
-        $status = intval($this->post("status", 0));
+        $status = intval($this->post("status", 1));
         $date_now = time();
 
         if (!$content) {
@@ -96,6 +96,7 @@ class TimelineController extends BaseController
             $timeline_model = Timeline::findOne(['id' => $id]);
         } else {
             $timeline_model = new Timeline();
+            $timeline_model->created_time = $date_now;
         }
 
         $timeline_model->title = $title;
@@ -105,7 +106,6 @@ class TimelineController extends BaseController
         $timeline_model->status = $status;
         $timeline_model->date = $date;
         $timeline_model->updated_time = $date_now;
-        $timeline_model->created_time = $date_now;
         $timeline_model->save(0);
         return $this->renderJson([], "操作成功");
     }
