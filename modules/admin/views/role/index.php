@@ -51,7 +51,7 @@ use app\common\services\UrlService;
                                     </div>
                                 </div>
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?=UrlService::buildWwwUrl('account/set')?>" class="btn btn-purple">
+                                    <a href="<?=UrlService::buildAdminUrl('/account/set')?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>

@@ -40,7 +40,7 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                                 ]); ?>
 
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?= UrlService::buildWwwUrl('category/set') ?>" class="btn btn-purple">
+                                    <a href="<?= UrlService::buildAdminUrl('/category/set') ?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>

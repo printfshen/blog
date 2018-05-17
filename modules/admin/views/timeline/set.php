@@ -79,7 +79,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/set.js", AdminAsset::class
                             <div class="col-md-3 control-label">content：</div>
                             <div class="col-md-9">
                                         <textarea placeholder="content" id="content" rows="13"
-                                                  class="form-control"><?= $info['content'] ?></textarea>
+                                                  class="form-control"><?= $info ? $info['content'] : "" ?></textarea>
                             </div>
                         </div>
 

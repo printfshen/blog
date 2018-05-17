@@ -39,7 +39,7 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
                                 ]); ?>
 
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?= UrlService::buildWwwUrl('timeline/set') ?>" class="btn btn-purple">
+                                    <a href="<?= UrlService::buildAdminUrl('/timeline/set') ?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>
@@ -105,8 +105,8 @@ StaticService::includeAppJsStatic("/js/admin/timeline/index.js", AdminAsset::cla
 
                         <!--分页代码已被封装到统一模板文件中-->
                         <?php echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/pagination.php", [
-                                'pages' => $pages,
-                                'url' => '/timeline/index'
+                            'pages' => $pages,
+                            'url' => '/timeline/index'
                         ]); ?>
 
                     </div>
