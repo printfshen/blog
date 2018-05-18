@@ -1,4 +1,12 @@
 <?php
+use app\common\services\StaticService;
+use app\assets\AdminAsset;
+
+StaticService::includeAppJsStatic( "/plugins/ueditor/ueditor.config.js",\app\assets\WebAsset::className() );
+StaticService::includeAppJsStatic( "/plugins/ueditor/ueditor.all.min.js",\app\assets\WebAsset::className() );
+StaticService::includeAppJsStatic( "/plugins/ueditor/lang/zh-cn/zh-cn.js",\app\assets\WebAsset::className() );
+
+StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::className());
 
 ?>
 <div id="content-container" class="admin_access_set_ops">
@@ -96,7 +104,7 @@
                             <div class="form-group">
                                 <div class="col-md-3 control-label">内容：</div>
                                 <div class="col-md-9">
-                                    <textarea placeholder="Message" rows="13" class="form-control"></textarea>
+                                    <textarea placeholder="Message" id="editor"  style="height: 400px"></textarea>
                                 </div>
                             </div>
 
@@ -112,6 +120,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-3 control-label">is_original：</div>
+
                                 <div class="col-md-9 control-label text-left">
                                     <input id="demo-online-status-checkbox" name="is_original" class="toggle-switch"
                                            type="checkbox"
@@ -119,6 +128,7 @@
                                     <label for="demo-online-status-checkbox"></label>
                                 </div>
                             </div>
+
 
                             <div class="form-group">
                                 <div class="col-md-3 control-label">status：</div>
@@ -135,7 +145,7 @@
                         <div class="panel-footer">
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <button class="btn btn-mint" type="submit">save</button>
+                                    <button class="btn btn-mint save" type="submit">save</button>
                                 </div>
                             </div>
                         </div>

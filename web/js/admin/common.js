@@ -2,6 +2,7 @@
 var common_ops = {
     init: function () {
         this.eventBind();
+        this.ue = null;
     },
     eventBind: function () {
         var that = this;
@@ -202,8 +203,6 @@ var common_ops = {
             }
         });
     },
-
-
 };
 $(document).ready(function () {
     common_ops.init();
