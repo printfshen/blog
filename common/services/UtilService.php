@@ -13,8 +13,14 @@ namespace app\common\services;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
 
-class UtilService
+class UtilService extends BaseService
 {
+    public static function getRootPath()
+    {
+        $vendor_path = \Yii::$app->vendorPath;
+        return dirname($vendor_path);
+    }
+
     /**
      * 获取IP地址
      * @return string
@@ -46,7 +52,6 @@ class UtilService
     {
         return HtmlPurifier::process($dispaly_text);
     }
-
 
 
 }

@@ -9,5 +9,6 @@ return [
 
     'upload' => [
         'avatar' => '/uploads/avatar',
+        'timeline' => '/uploads/timeline',
     ],
 ];

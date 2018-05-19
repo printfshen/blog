@@ -9,7 +9,7 @@
 namespace app\common\services;
 
 
-class ConstantMapService
+class ConstantMapService extends BaseService
 {
     public static $status_default = -1;
     public static $default_avatar = 'default_avatar';

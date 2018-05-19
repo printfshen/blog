@@ -41,6 +41,7 @@ class AdminAsset extends AssetBundle
             //图标样式
             'plugins/nifty-v2.5/demo/plugins/ionicons/css/ionicons.css',
             'plugins/nifty-v2.5/demo/plugins/font-awesome/css/font-awesome.min.css',
+            'css/admin/style.css'
         ];
         $this->js = [
             //Pace - Page Load Progress Par [OPTIONAL] 网页加载进度条

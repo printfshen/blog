@@ -22,10 +22,10 @@ class AccountController extends BaseController
      */
     public function actionIndex()
     {
-        $status = $this->post('status', '-1');
-        $mix_kw = $this->post('mix_kw', '');
-        $p = $this->post('p');
-        $p = $p ? $p : 0;
+        $status = $this->get('status', '-1');
+        $mix_kw = $this->get('mix_kw', '');
+        $p = $this->get('p', 1);
+        $p = (($p < 1) ? 0 : $p);
 
         $query = User::find();
         if ($status > ConstantMapService::$status_default) {
@@ -42,7 +42,7 @@ class AccountController extends BaseController
         $total_pages = ceil($total_res_count / $this->page_size);
 
         $list = $query->offset(($p - 1) * $this->page_size)
-            ->limit($this->page_size)->all();
+            ->limit($this->page_size)->orderBy(['created_time'=>SORT_DESC])->all();
 
         return $this->render('index', [
             'list' => $list,
@@ -69,7 +69,14 @@ class AccountController extends BaseController
     public function actionSet()
     {
         if (\Yii::$app->request->isGet) {
-            return $this->render('set');
+            $uid = intval($this->get('uid', 0));
+            $info = [];
+            if ($uid) {
+                $info = User::findOne(['uid' => $uid]);
+            }
+            return $this->render('set', [
+                'info' => $info
+            ]);
         }
         $nickname = trim($this->post("nickname", ""));
         $mobile = trim($this->post("mobile", 0));
@@ -90,7 +97,7 @@ class AccountController extends BaseController
             return $this->renderJson([], '请输入符合要求的邮箱', -1);
         }
         if (!preg_match('/^[a-zA-z][a-zA-Z0-9]{4,20}$/', $login_name)) {
-            return $this->renderJson([], '登陆名只支持字母开头和数字的组合，2-20个字符', -1);
+            return $this->renderJson([], '登陆名只支持字母开头和数字的组合，5-20个字符', -1);
         }
         if (mb_strlen($login_pwd, "utf-8") < 5 || mb_strlen($login_pwd, "utf-8") > 20) {
             return $this->renderJson([], "请输入5-20位的密码", -1);
@@ -98,10 +105,12 @@ class AccountController extends BaseController
         if (!in_array($status, [0, 1])) {
             return $this->renderJson([], ConstantMapService::$default_error, -1);
         }
-        $has_in = User::find()->where(['login_name' => $login_name])->count();
+        $has_in = User::find()->where(['login_name' => $login_name])
+            ->andWhere(['<>', 'login_name', $login_name])->count();
         if ($has_in) {
             return $this->renderJson([], "登陆名已经存在，请重试", -1);
         }
+
         $info = User::findOne(['uid' => $uid]);
         if ($info) {
             $user_model = $info;
@@ -118,12 +127,12 @@ class AccountController extends BaseController
         $user_model->avatar = ConstantMapService::$default_avatar;
         $user_model->login_name = $login_name;
         if ($login_pwd != ConstantMapService::$default_pwd) {
-            $user_model->getSaltPassword($login_pwd);
+            $user_model->setPassword($login_pwd);
         }
         $user_model->status = $status;
         $user_model->updated_time = $date_now;
-
-        var_dump($user_model);
+        $user_model->save(0);
+        return $this->renderJson([], "操作成功");
     }
 
 
@@ -148,6 +157,35 @@ class AccountController extends BaseController
         return $this->render('info', [
             'info' => $info
         ]);
+    }
+
+    /**
+     * 删除 和 恢复
+     */
+    public function actionOps()
+    {
+        $act = $this->post("act", "");
+        $id = $this->post("id", 0);
+        if (!$id) {
+            return $this->renderJSON([], "请选择要操作的账号", -1);
+        }
+
+        if (!in_array($act, ['remove', 'recover'])) {
+            return $this->renderJSON([], "操作有误，请重试", -1);
+        }
+
+        $info = User::find()->where(['uid' => $id])->one();
+        if (!$info) {
+            return $this->renderJSON([], "指定账号不存在", -1);
+        }
+        if ($act == "remove") {
+            $info->status = 0;
+        } else {
+            $info->status = 1;
+        }
+        $info->updated_time = time();
+        $info->save(0);
+        return $this->renderJson([], "操作成功");
     }
 
 }
