@@ -72,7 +72,7 @@ StaticService::includeAppJsStatic("/js/admin/account/set.js", AdminAsset::classN
                         <div class="form-group">
                             <div class="col-md-3 control-label">status：</div>
                             <div class="col-md-9 control-label text-left">
-                                <input id="demo-online-status-checkbox" class="toggle-switch" name="status"
+                                <input id="demo-online-status-checkbox" class="status" name="status"
                                        type="checkbox"
                                        <?= $info ? ($info['status'] == 1 ? "checked" : "") : "checked"; ?>>
                                 <label for="demo-online-status-checkbox"></label>

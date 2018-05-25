@@ -80,8 +80,8 @@ class TimelineController extends BaseController
         $title = trim($this->post("title", ""));
         $date = strtotime($this->post("date", date("Y-m-d", time())));
         $content = trim($this->post("content", ""));
-        $pics = $this->post("pics", "");
-        $pic = !empty($pics) ? $pics[0] : "";
+        $pics = $this->post("pics", []);
+        $pic = !empty($pics) ? $pics[0] : [];
         $status = intval($this->post("status", 1));
         $date_now = time();
 

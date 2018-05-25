@@ -2,6 +2,7 @@
 var admin_tag_edit_ops = {
     init: function () {
         this.eventBind();
+        common_ops.switchery(".status")
     },
     eventBind: function () {
         var that = this;
@@ -9,7 +10,7 @@ var admin_tag_edit_ops = {
         that.admin_tag_edit_save();
     },
     admin_tag_edit_save: function () {
-        var clickCheckbox = document.querySelector(".toggle-switch"),
+        var clickCheckbox = document.querySelector(".status"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {
             var status = clickCheckbox.checked ? 1 : 0;

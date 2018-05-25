@@ -203,6 +203,11 @@ var common_ops = {
             }
         });
     },
+    switchery: function (obj) {
+        var elem = document.querySelector(obj);
+        var init = new Switchery(elem);
+    }
+
 };
 $(document).ready(function () {
     common_ops.init();

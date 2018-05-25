@@ -2,6 +2,7 @@
 var admin_account_set_ops = {
     init: function () {
         this.eventBind();
+        common_ops.switchery(".status")
     },
     eventBind: function () {
         var that = this;
@@ -9,12 +10,13 @@ var admin_account_set_ops = {
         that.admin_account_set_save();
     },
     admin_account_set_save: function () {
-        var clickCheckbox = document.querySelector(".toggle-switch"),
+        var clickCheckbox = document.querySelector(".status"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {
             var btn_target = $(this);
             if (btn_target.hasClass("disabled")) {
                 common_ops.alert("正在处理!!请不要重复提交");
+                return;
             }
 
             var status = clickCheckbox.checked ? 1 : 0;

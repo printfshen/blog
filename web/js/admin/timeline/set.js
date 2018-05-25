@@ -8,6 +8,7 @@ var admin_timeline_set_ops = {
             {bucket: $('input[name=bucket]').val()},
             false
         );
+        common_ops.switchery(".status");
     },
     eventBind: function () {
         var that = this;
@@ -21,13 +22,13 @@ var admin_timeline_set_ops = {
 
     },
     admin_timeline_set_save: function () {
-        var clickCheckbox = document.querySelector(".toggle-switch"),
+        var clickCheckbox = document.querySelector(".status"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {
             var btn_target = $(this);
             if (btn_target.hasClass("disabled")) {
                 common_ops.alert("正在处理!!请不要重复提交");
-                return
+                return;
             }
             var id = $(".admin_timeline_set_ops input[name=id]").val();
 

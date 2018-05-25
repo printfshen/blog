@@ -41,6 +41,8 @@ class AdminAsset extends AssetBundle
             //图标样式
             'plugins/nifty-v2.5/demo/plugins/ionicons/css/ionicons.css',
             'plugins/nifty-v2.5/demo/plugins/font-awesome/css/font-awesome.min.css',
+            //switchery 开关按钮
+            'plugins/switchery/switchery.min.css',
             'css/admin/style.css'
         ];
         $this->js = [
@@ -56,6 +58,8 @@ class AdminAsset extends AssetBundle
             'plugins/nifty-v2.5/demo/js/demo/nifty-demo.min.js',
             //Sparkline [ OPTIONAL ]
             'plugins/nifty-v2.5/demo/plugins/sparkline/jquery.sparkline.min.js',
+            //switchery 开关按钮
+            'plugins/switchery/switchery.min.js',
             'plugins/layer-v3.1.1/layer.js',
             'js/admin/common.js'
 
