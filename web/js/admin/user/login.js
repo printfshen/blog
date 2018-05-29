@@ -18,7 +18,6 @@ var user_login_ops = {
             e.preventDefault();
             e.stopPropagation();
 
-
             var $el = $(this);
             if ($el.hasClass('active') || $imgHolder.hasClass('disabled')) return;
             if ($el.hasClass('bg-trans')) {

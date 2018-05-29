@@ -23,6 +23,8 @@ var admin_article_set_ops = {
         $("body").on("click", ".picture_delete", function () {
             common_ops.removePluploadPic($(this));
         });
+
+
     },
     admin_article_set_save: function (that) {
         var is_top_tmp = document.querySelector(".is_top"),
@@ -65,9 +67,9 @@ var admin_article_set_ops = {
 
             var content = that.ue.getContent();
 
-            var is_top = is_top_tmp.checked;
-            var is_original = is_original_tmp.checked;
-            var status = status_tmp.checked;
+            var is_top = is_top_tmp.checked ? 1 : 0;
+            var is_original = is_original_tmp.checked ? 1 : 0;
+            var status = status_tmp.checked ? 1 : 0;
 
             if (c_id <= 0) {
                 common_ops.alert("请选择分类");

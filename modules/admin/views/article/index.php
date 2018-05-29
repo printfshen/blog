@@ -3,6 +3,7 @@
 use app\common\services\UrlService;
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
+use app\common\services\ConstantMapService;
 
 StaticService::includeAppJsStatic("/js/admin/article/index.js", AdminAsset::className());
 
@@ -53,47 +54,54 @@ StaticService::includeAppJsStatic("/js/admin/article/index.js", AdminAsset::clas
                                 <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
+                                    <th class="text-center">category</th>
                                     <th class="text-center">name</th>
-                                    <th class="text-center">content</th>
+                                    <th class="text-center">发帖人</th>
+                                    <th class="text-center">点击数</th>
                                     <th class="text-center">status</th>
                                     <th class="text-center">date</th>
                                     <th class="text-center">operation</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
-                                <!---正常数据显示-->
-                                <tr class="text-center">
-                                    <td>1</td>
-                                    <td>name</td>
-                                    <td>你好</td>
-                                    <td>
-                                        <div class="label label-table label-success">YES</div>
-                                        <div class="label label-table label-danger">NO</div>
-                                    </td>
-                                    <td>2018-3-19</td>
-                                    <td>
-                                        <a href="#">
-                                            <i class="fa fa-eye fa-lg"></i>
-                                        </a>
-                                        <a class="m-l" href="#">
-                                            <i class="fa fa-edit fa-lg"></i>
-                                        </a>
-                                        <a class="m-l remove" href="javascript:void(0);" data="">
-                                            <i class="fa fa-trash fa-lg"></i>
-                                        </a>
-                                        <a class="m-l recover" href="javascript:void(0);" data="">
-                                            <i class="fa fa-rotate-left fa-lg"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-
-
-                                <!---没有数据显示---->
-                                <tr class="text-center">
-                                    <td colspan="6">No matching records found</td>
-                                </tr>
-
+                                <?php if ($list): ?>
+                                    <!---正常数据显示-->
+                                    <?php foreach ($list as $_item): ?>
+                                        <tr class="text-center">
+                                            <td><?= $_item['id'] ?></td>
+                                            <td><?= $_item['tag']['name'] ?></td>
+                                            <td><?= $_item['title'] ?></td>
+                                            <td><?= $_item['username'] ?></td>
+                                            <td><?= $_item['hits'] ?></td>
+                                            <td>
+                                                <?= ConstantMapService::$state_mapping[$_item['status']] ?>
+                                            </td>
+                                            <td><?= date("Y-m-d H:i:s", $_item['created_time']) ?></td>
+                                            <td>
+                                                <a class="m-l"
+                                                   href="<?= UrlService::buildAdminUrl('/article/set', ['id' => $_item['id']]) ?>">
+                                                    <i class="fa fa-edit fa-lg"></i>
+                                                </a>
+                                                <?php if ($_item['status']): ?>
+                                                    <a class="m-l remove" href="javascript:void(0);"
+                                                       data="<?= $_item['id'] ?>">
+                                                        <i class="fa fa-trash fa-lg"></i>
+                                                    </a>
+                                                <?php else: ?>
+                                                    <a class="m-l recover" href="javascript:void(0);"
+                                                       data="<?= $_item['id'] ?>">
+                                                        <i class="fa fa-rotate-left fa-lg"></i>
+                                                    </a>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <!---没有数据显示---->
+                                    <tr class="text-center">
+                                        <td colspan="6">No matching records found</td>
+                                    </tr>
+                                <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>

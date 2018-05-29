@@ -11,10 +11,12 @@ namespace app\modules\admin\controllers;
 
 use app\common\services\TreeService;
 use app\models\article\Article;
+use app\models\article\ArticleTag;
 use app\models\category\Category;
 use app\models\tag\Tag;
 use app\modules\admin\controllers\common\BaseController;
 use app\common\services\ConstantMapService;
+use yii\db\Exception;
 
 
 class ArticleController extends BaseController
@@ -30,7 +32,7 @@ class ArticleController extends BaseController
         $p = $this->get('p', 1);
         $p = (($p < 1) ? 0 : $p);
 
-        $query = Article::find();
+        $query = Article::find()->joinWith(['tag']);
         if ($status > ConstantMapService::$status_default) {
             $query->andWhere(['status' => $status]);
         }
@@ -72,11 +74,12 @@ class ArticleController extends BaseController
     {
         if (\Yii::$app->request->isGet) {
             $id = $this->get("id", 0);
-            $info = [];
+            $info = $info_tag = [];
             if ($id) {
                 $info = Article::findOne(['id' => $id]);
+                $info_tag = ArticleTag::find()->where(['article_id' => $id])->asArray()->all();
+                $info_tag = array_column($info_tag, 'tag_id');
             }
-
             $category_list = Category::find()->where(['status' => 1])->asArray()->all();
             $category_list = TreeService::getTree($category_list);
 
@@ -84,6 +87,7 @@ class ArticleController extends BaseController
 
             return $this->render("set", [
                 'info' => $info,
+                'info_tag' => $info_tag,
                 'category_list' => $category_list,
                 'tag_list' => $tag_list
             ]);
@@ -123,27 +127,50 @@ class ArticleController extends BaseController
 
         $keyword = implode(",", $keywords);
 
-        if ($id) {
-            $article_model = Article::findOne(['id' => $id]);
-        } else {
-            $article_model = new Article();
-            $article_model->created_time = $date_time;
+        $tr = \Yii::$app->db->beginTransaction();
+        try {
+            if ($id) {
+                $article_model = Article::findOne(['id' => $id]);
+                ArticleTag::deleteAll(['article_id' => $id]);
+            } else {
+                $article_model = new Article();
+                $article_model->created_time = $date_time;
+            }
+            $article_model->c_id = $c_id;
+            $article_model->user_id = $this->current_user->uid;
+            $article_model->pic = $pic;
+            $article_model->username = $this->current_user->nickname;
+            $article_model->title = $title;
+            $article_model->description = $description;
+            $article_model->content = $content;
+            $article_model->keywords = $keyword;
+            $article_model->status = $status;
+            $article_model->is_top = $is_top;
+            $article_model->is_original = $is_original;
+            $article_model->hits = 0;
+            $article_model->updated_time = $date_time;
+            $article_model->save(0);
+
+            $data = [];
+            foreach ($keywords as $_item) {
+                array_push($data, [
+                    'article_id' => $article_model->id,
+                    'tag_id' => $_item
+                ]);
+            }
+            \Yii::$app->db->createCommand()->batchInsert(
+                ArticleTag::tableName(),
+                ['article_id', 'tag_id'],
+                $data
+            )->execute();
+
+            $tr->commit();
+            return $this->renderJson([], "操作成功");
+        } catch (Exception $e) {
+            $tr->rollBack();
+            return $this->renderJson([], '操作失败', -1);
         }
-        $article_model->c_id = $c_id;
-        $article_model->user_id = $this->current_user->uid;
-        $article_model->pic = $pic;
-        $article_model->username = $this->current_user->nickname;
-        $article_model->title = $title;
-        $article_model->description = $description;
-        $article_model->content = $content;
-        $article_model->keywords = $keyword;
-        $article_model->status = $status;
-        $article_model->is_top = $is_top;
-        $article_model->is_original = $is_original;
-        $article_model->hits = 0;
-        $article_model->updated_time = $date_time;
-        $article_model->save(0);
-        return $this->renderJson([], "操作成功");
+
     }
 
     /**
@@ -151,6 +178,27 @@ class ArticleController extends BaseController
      */
     public function actionOps()
     {
+        $act = $this->post("act", "");
+        $id = $this->post("id", 0);
+        if (!$id) {
+            return $this->renderJSON([], "请选择要操作的文章", -1);
+        }
 
+        if (!in_array($act, ['remove', 'recover'])) {
+            return $this->renderJSON([], "操作有误，请重试", -1);
+        }
+
+        $info = Article::find()->where(['id' => $id])->one();
+        if (!$info) {
+            return $this->renderJSON([], "指定文章不存在", -1);
+        }
+        if ($act == "remove") {
+            $info->status = 0;
+        } else {
+            $info->status = 1;
+        }
+        $info->updated_time = time();
+        $info->save(0);
+        return $this->renderJson([], "操作成功");
     }
 }

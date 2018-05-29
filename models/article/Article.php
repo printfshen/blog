@@ -2,6 +2,7 @@
 
 namespace app\models\article;
 
+use app\models\tag\Tag;
 use Yii;
 
 /**
@@ -25,6 +26,11 @@ use Yii;
  */
 class Article extends \yii\db\ActiveRecord
 {
+    public function getTag()
+    {
+        return $this->hasOne(Tag::className(), ['id' => 'c_id']);
+    }
+
     /**
      * @inheritdoc
      */

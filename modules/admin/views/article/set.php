@@ -2,6 +2,7 @@
 
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
+use app\common\services\UrlService;
 
 StaticService::includeAppJsStatic("/plugins/ueditor/ueditor.config.js", \app\assets\WebAsset::className());
 StaticService::includeAppJsStatic("/plugins/ueditor/ueditor.all.min.js", \app\assets\WebAsset::className());
@@ -42,7 +43,11 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                                     <option value="-1">请选择状态</option>
                                     <?php if ($category_list): ?>
                                         <?php foreach ($category_list as $c_item): ?>
-                                            <option value="<?= $c_item['id'] ?>"><?= $c_item['_name'] ?></option>
+                                            <option <?php if ($info) {
+                                                if ($info['c_id'] == $c_item['id']) {
+                                                    echo "selected";
+                                                }
+                                            } ?> value="<?= $c_item['id'] ?>"><?= $c_item['_name'] ?></option>
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 </select>
@@ -59,6 +64,9 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                                         <?php foreach ($tag_list as $t_item): ?>
                                             <label class="form-checkbox form-icon">
                                                 <input type="checkbox" name="keywords"
+                                                    <?php if (in_array($t_item['id'], $info_tag)) {
+                                                        echo "checked";
+                                                    } ?>
                                                        value="<?= $t_item['id']; ?>"><?= $t_item['name']; ?>
                                             </label>
                                         <?php endforeach; ?>
@@ -82,7 +90,7 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                                     </span>
                                         <?php endif; ?>
                                     <?php endif; ?>
-                                    <input type="hidden" name="bucket" value="timeline"/>
+                                    <input type="hidden" name="bucket" value="article"/>
                                     <a class="cover_btn" id="cover_btn_big"><span>+</span></a>
                                 </div>
                             </div>
@@ -91,7 +99,8 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="name">title：</label>
                             <div class="col-md-9">
-                                <input type="text" id="title" name="title" class="form-control" placeholder="title">
+                                <input type="text" id="title" name="title" class="form-control"
+                                       value="<?= $info ? $info['title'] : ""; ?>" placeholder="title">
                             </div>
                         </div>
 
@@ -99,14 +108,14 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                             <div class="col-md-3 control-label">description：</div>
                             <div class="col-md-9">
                                     <textarea placeholder="description" name="description" rows="2"
-                                              class="form-control"></textarea>
+                                              class="form-control"><?= $info ? $info['description'] : ""; ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-3 control-label">内容：</div>
                             <div class="col-md-9">
-                                <textarea placeholder="content" id="editor" style="height: 400px"></textarea>
+                                <textarea placeholder="content" id="editor" style="height: 400px"><?= $info ? $info['content'] : ""; ?></textarea>
                             </div>
                         </div>
 
@@ -115,7 +124,7 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                             <div class="col-md-9 control-label text-left">
                                 <input id="demo-online-status-checkbox" name="is_top" class="is_top"
                                        type="checkbox"
-                                       checked="">
+                                    <?= $info ? ($info['is_top'] == 1 ? "checked" : "") : "checked"; ?>>
                                 <label for="demo-online-status-checkbox"></label>
                             </div>
                         </div>
@@ -126,7 +135,7 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                             <div class="col-md-9 control-label text-left">
                                 <input id="demo-online-status-checkbox" name="is_original" class="is_original"
                                        type="checkbox"
-                                       checked="">
+                                    <?= $info ? ($info['is_original'] == 1 ? "checked" : "") : "checked"; ?>>
                                 <label for="demo-online-status-checkbox"></label>
                             </div>
                         </div>
@@ -136,7 +145,7 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
                             <div class="col-md-9 control-label text-left">
                                 <input id="demo-online-status-checkbox" name="status" class="status"
                                        type="checkbox"
-                                       checked="">
+                                    <?= $info ? ($info['status'] == 1 ? "checked" : "") : "checked"; ?>>
                                 <label for="demo-online-status-checkbox"></label>
                             </div>
                         </div>
