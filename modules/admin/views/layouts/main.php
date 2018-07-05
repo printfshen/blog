@@ -989,7 +989,7 @@ $upload_config = Yii::$app->params['upload'];
                                         <li><a href="">第三方登陆</a></li>
                                         <li><a href="">友情链接</a></li>
                                         <li><a href="">文章水印</a></li>
-                                        <li><a href="">屏蔽词</a></li>
+                                        <li><a href="<?=UrlService::buildWwwUrl("setting/keyword")?>">屏蔽词</a></li>
                                     </ul>
                                 </li>
 

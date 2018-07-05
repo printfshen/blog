@@ -193,10 +193,11 @@ var common_ops = {
             width: '100%'
         })
     },
-    tagsInput: function (obj) {
+    tagsInput: function (obj, height) {
+        height = (height ? height: 34)
         obj.tagsInput({
             width: 'auto',
-            height: 34,
+            height: height,
             onAddTag: function (tag) {
             },
             onRemoveTag: function (tag) {
