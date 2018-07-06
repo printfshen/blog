@@ -877,7 +877,7 @@ $upload_config = Yii::$app->params['upload'];
 
                                 <!--Menu list item-->
                                 <li class="active-link">
-                                    <a href="<?= UrlService::buildWwwUrl('dashboard/index') ?>">
+                                    <a href="<?= UrlService::buildAdminUrl('/dashboard/index') ?>">
                                         <i class="demo-psi-home"></i>
                                         <span class="menu-title">
 												<strong>Dashboard</strong>
@@ -897,9 +897,9 @@ $upload_config = Yii::$app->params['upload'];
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="<?= UrlService::buildWwwUrl('account/index') ?>">账号列表</a></li>
-                                        <li><a href="<?= UrlService::buildWwwUrl('role/index') ?>">角色列表</a></li>
-                                        <li><a href="<?= UrlService::buildWwwUrl('access/index') ?>">权限列表</a></li>
+                                        <li><a href="<?= UrlService::buildAdminUrl('/account/index') ?>">账号列表</a></li>
+                                        <li><a href="<?= UrlService::buildAdminUrl('/role/index') ?>">角色列表</a></li>
+                                        <li><a href="<?= UrlService::buildAdminUrl('/access/index') ?>">权限列表</a></li>
                                     </ul>
                                 </li>
 
@@ -915,10 +915,10 @@ $upload_config = Yii::$app->params['upload'];
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="<?=UrlService::buildWwwUrl('category/index')?>">分类列表</a></li>
-                                        <li><a href="<?=UrlService::buildWwwUrl('article/index')?>">文章列表</a></li>
-                                        <li><a href="<?=UrlService::buildWwwUrl('tag/index')?>">标签列表</a></li>
-                                        <li><a href="<?=UrlService::buildWwwUrl('comment/index')?>">评论列表</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/category/index')?>">分类列表</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/article/index')?>">文章列表</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/tag/index')?>">标签列表</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/comment/index')?>">评论列表</a></li>
                                     </ul>
                                 </li>
                                 <!--Menu list item-->
@@ -933,7 +933,7 @@ $upload_config = Yii::$app->params['upload'];
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="<?= UrlService::buildWwwUrl('timeline/index') ?>">列表</a></li>
+                                        <li><a href="<?= UrlService::buildAdminUrl('/timeline/index') ?>">列表</a></li>
                                     </ul>
                                 </li>
 
@@ -987,9 +987,9 @@ $upload_config = Yii::$app->params['upload'];
                                         <li><a href="">网站设置</a></li>
                                         <li><a href="">优化推广</a></li>
                                         <li><a href="">第三方登陆</a></li>
-                                        <li><a href="">友情链接</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/link/index')?>">友情链接</a></li>
                                         <li><a href="">文章水印</a></li>
-                                        <li><a href="<?=UrlService::buildWwwUrl("setting/keyword")?>">屏蔽词</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl("/setting/keyword")?>">屏蔽词</a></li>
                                     </ul>
                                 </li>
 

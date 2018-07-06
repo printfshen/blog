@@ -5,7 +5,7 @@ use app\common\services\StaticService;
 use app\assets\AdminAsset;
 use app\common\services\ConstantMapService;
 
-StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::className());
+StaticService::includeAppJsStatic("/js/admin/link/index.js", AdminAsset::className());
 
 
 ?>
@@ -40,7 +40,7 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                                 ]); ?>
 
                                 <div class="col-sm-4 table-toolbar-right">
-                                    <a href="<?= UrlService::buildAdminUrl('/category/set') ?>" class="btn btn-purple">
+                                    <a href="<?= UrlService::buildAdminUrl('/link/set') ?>" class="btn btn-purple">
                                         <i class="demo-pli-add icon-fw"></i>add
                                     </a>
                                 </div>
@@ -54,9 +54,8 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                                 <thead>
                                 <tr>
                                     <th class="text-center">ID</th>
-                                    <th class="text-center">name</th>
-                                    <th class="text-center">lev</th>
-                                    <th class="text-center">keyword</th>
+                                    <th class="text-center">title</th>
+                                    <th class="text-center">url</th>
                                     <th class="text-center">status</th>
                                     <th class="text-center">created_time</th>
                                     <th class="text-center">operation</th>
@@ -69,16 +68,15 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                                     <?php foreach ($list as $_item): ?>
                                         <tr class="text-center">
                                             <td><?= $_item['id'] ?></td>
-                                            <td><?= $_item['name'] ?></td>
-                                            <td><?= $_item['_lev'] ?></td>
-                                            <td><?= $_item['keyword'] ?></td>
+                                            <td><?= $_item['title'] ?></td>
+                                            <td><?= $_item['url'] ?></td>
                                             <td>
                                                 <?= ConstantMapService::$state_mapping[$_item['status']] ?>
                                             </td>
                                             <td><?= date("Y-m-d", $_item['created_time']) ?></td>
                                             <td>
                                                 <a class="m-l"
-                                                   href="<?= UrlService::buildAdminUrl('/category/set', ['id' => $_item['id']]); ?>">
+                                                   href="<?= UrlService::buildAdminUrl('/link/set', ['id' => $_item['id']]); ?>">
                                                     <i class="fa fa-edit fa-lg"></i>
                                                 </a>
                                                 <?php if ($_item['status'] == 1): ?>
@@ -109,7 +107,7 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                         <?php
                         echo \Yii::$app->view->renderFile("@app/modules/admin/views/common/pagination.php", [
                             'pages' => $pages,
-                            'url' => '/category/index'
+                            'url' => '/link/index'
                         ]); ?>
                     </div>
                 </div>

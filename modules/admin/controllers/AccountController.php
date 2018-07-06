@@ -42,7 +42,7 @@ class AccountController extends BaseController
         $total_pages = ceil($total_res_count / $this->page_size);
 
         $list = $query->offset(($p - 1) * $this->page_size)
-            ->limit($this->page_size)->orderBy(['created_time'=>SORT_DESC])->all();
+            ->limit($this->page_size)->orderBy(['created_time' => SORT_DESC])->all();
 
         return $this->render('index', [
             'list' => $list,
@@ -152,7 +152,6 @@ class AccountController extends BaseController
         if (!$info) {
             return $this->redirect($reback_url);
         }
-
 
         return $this->render('info', [
             'info' => $info
