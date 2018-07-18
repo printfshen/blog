@@ -56,7 +56,6 @@ class TestHelper extends \Codeception\Module {
 This will make your functional tests run super-fast.
 
 
-
 ## Actions
 
 ### _findElements
@@ -564,7 +563,6 @@ $I->grabAttributeFrom('#tooltip', 'title');
 ?>
 ```
 
-
  * `param` $cssOrXpath
  * `param` $attribute
 
@@ -1022,6 +1020,34 @@ $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
  * `param` $code
 
 
+### seeResponseCodeIsBetween
+ 
+Checks that response code is between a certain range. Between actually means [from <= CODE <= to]
+
+ * `param` $from
+ * `param` $to
+
+
+### seeResponseCodeIsClientError
+ 
+Checks that the response code is 4xx
+
+
+### seeResponseCodeIsRedirection
+ 
+Checks that the response code 3xx
+
+
+### seeResponseCodeIsServerError
+ 
+Checks that the response code is 5xx
+
+
+### seeResponseCodeIsSuccessful
+ 
+Checks that the response code 2xx
+
+
 ### selectOption
  
 Selects an option in a select tag or in radio button group.
@@ -1328,4 +1354,4 @@ $I->uncheckOption('#notify');
 
  * `param` $option
 
-<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.3/src/Codeception/Module/ZF1.php">Help us to improve documentation. Edit module reference</a></div>
+<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.4/src/Codeception/Module/ZF1.php">Help us to improve documentation. Edit module reference</a></div>

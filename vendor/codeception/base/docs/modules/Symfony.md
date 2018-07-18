@@ -7,17 +7,53 @@ This module uses Symfony Crawler and HttpKernel to emulate requests and test res
 
 <https://github.com/Codeception/symfony-demo>
 
-## Status
-
-* Maintainer: **raistlin**
-* Stability: **stable**
-
 ## Config
+
+### Symfony 4.x
+
+* app_path: 'src' - in Symfony 4 Kernel is located inside `src`
+* environment: 'local' - environment used for load kernel
+* kernel_class: 'App\Kernel' - kernel class name
+* em_service: 'doctrine.orm.entity_manager' - use the stated EntityManager to pair with Doctrine Module.
+* debug: true - turn on/off debug mode
+* cache_router: 'false' - enable router caching between tests in order to [increase performance](http://lakion.com/blog/how-did-we-speed-up-sylius-behat-suite-with-blackfire)
+* rebootable_client: 'true' - reboot client's kernel before each request
+
+#### Example (`functional.suite.yml`) - Symfony 4 Directory Structure
+
+    modules:
+       enabled:
+          - Symfony:
+              app_path: 'src'
+              environment: 'test'
+
+
+### Symfony 3.x
+
+* app_path: 'app' - specify custom path to your app dir, where the kernel interface is located.
+* var_path: 'var' - specify custom path to your var dir, where bootstrap cache is located.
+* environment: 'local' - environment used for load kernel
+* kernel_class: 'AppKernel' - kernel class name
+* em_service: 'doctrine.orm.entity_manager' - use the stated EntityManager to pair with Doctrine Module.
+* debug: true - turn on/off debug mode
+* cache_router: 'false' - enable router caching between tests in order to [increase performance](http://lakion.com/blog/how-did-we-speed-up-sylius-behat-suite-with-blackfire)
+* rebootable_client: 'true' - reboot client's kernel before each request
+
+#### Example (`functional.suite.yml`) - Symfony 3 Directory Structure
+
+    modules:
+       enabled:
+          - Symfony:
+              app_path: 'app/front'
+              var_path: 'var'
+              environment: 'local_test'
+
 
 ### Symfony 2.x
 
 * app_path: 'app' - specify custom path to your app dir, where bootstrap cache and kernel interface is located.
 * environment: 'local' - environment used for load kernel
+* kernel_class: 'AppKernel' - kernel class name
 * debug: true - turn on/off debug mode
 * em_service: 'doctrine.orm.entity_manager' - use the stated EntityManager to pair with Doctrine Module.
 * cache_router: 'false' - enable router caching between tests in order to [increase performance](http://lakion.com/blog/how-did-we-speed-up-sylius-behat-suite-with-blackfire)
@@ -31,26 +67,6 @@ This module uses Symfony Crawler and HttpKernel to emulate requests and test res
            app_path: 'app/front'
            environment: 'local_test'
 ```
-
-### Symfony 3.x Directory Structure
-
-* app_path: 'app' - specify custom path to your app dir, where the kernel interface is located.
-* var_path: 'var' - specify custom path to your var dir, where bootstrap cache is located.
-* environment: 'local' - environment used for load kernel
-* em_service: 'doctrine.orm.entity_manager' - use the stated EntityManager to pair with Doctrine Module.
-* debug: true - turn on/off debug mode
-* cache_router: 'false' - enable router caching between tests in order to [increase performance](http://lakion.com/blog/how-did-we-speed-up-sylius-behat-suite-with-blackfire)
-* rebootable_client: 'true' - reboot client's kernel before each request
-
-### Example (`functional.suite.yml`) - Symfony 3 Directory Structure
-
-    modules:
-       enabled:
-          - Symfony:
-              app_path: 'app/front'
-              var_path: 'var'
-              environment: 'local_test'
-
 
 ## Public Properties
 
@@ -75,7 +91,6 @@ modules:
             url: http://your-url.com
             browser: phantomjs
 ```
-
 
 
 ## Actions
@@ -584,7 +599,6 @@ Fails if element is not found.
 $I->grabAttributeFrom('#tooltip', 'title');
 ?>
 ```
-
 
  * `param` $cssOrXpath
  * `param` $attribute
@@ -1129,6 +1143,34 @@ $I->seeResponseCodeIs(\Codeception\Util\HttpCode::OK);
  * `param` $code
 
 
+### seeResponseCodeIsBetween
+ 
+Checks that response code is between a certain range. Between actually means [from <= CODE <= to]
+
+ * `param` $from
+ * `param` $to
+
+
+### seeResponseCodeIsClientError
+ 
+Checks that the response code is 4xx
+
+
+### seeResponseCodeIsRedirection
+ 
+Checks that the response code 3xx
+
+
+### seeResponseCodeIsServerError
+ 
+Checks that the response code is 5xx
+
+
+### seeResponseCodeIsSuccessful
+ 
+Checks that the response code 2xx
+
+
 ### selectOption
  
 Selects an option in a select tag or in radio button group.
@@ -1442,4 +1484,4 @@ Remove service $serviceName from the lists of persistent services.
 
  * `param string` $serviceName
 
-<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.3/src/Codeception/Module/Symfony.php">Help us to improve documentation. Edit module reference</a></div>
+<p>&nbsp;</p><div class="alert alert-warning">Module reference is taken from the source code. <a href="https://github.com/Codeception/Codeception/tree/2.4/src/Codeception/Module/Symfony.php">Help us to improve documentation. Edit module reference</a></div>
