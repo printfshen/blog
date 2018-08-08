@@ -27,8 +27,5 @@ class RoleController extends BaseController
         if (\Yii::$app->request->isGet){
             return $this->render('set');
         }
-
-
-
     }
 }

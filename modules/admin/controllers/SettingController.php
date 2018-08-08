@@ -17,6 +17,30 @@ use yii\db\Exception;
 class SettingController extends BaseController
 {
     /**
+     * 网站配置
+     * @return string
+     */
+    public function actionIndex()
+    {
+        if (\Yii::$app->request->isPost) {
+            $postData = $this->post(null);
+            Config::UpdateConfig($postData);
+            return $this->renderJson([], "操作成功");
+        }
+        $list = Config::find()->where(['type' => 1])->asArray()->all();
+        $info = [];
+        if ($list) {
+            foreach ($list as $item) {
+                $info[$item['name']] = $item['value'];
+            }
+        }
+        return $this->render("index", [
+            'info' => $info
+        ]);
+    }
+
+
+    /**
      * 屏蔽词管理
      */
     public function actionKeyword()

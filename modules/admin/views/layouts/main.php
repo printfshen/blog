@@ -984,15 +984,13 @@ $upload_config = Yii::$app->params['upload'];
 
                                     <!--Submenu-->
                                     <ul class="collapse">
-                                        <li><a href="">网站设置</a></li>
-                                        <li><a href="">优化推广</a></li>
+                                        <li><a href="<?=UrlService::buildAdminUrl('/setting/index')?>">网站设置</a></li>
                                         <li><a href="">第三方登陆</a></li>
                                         <li><a href="<?=UrlService::buildAdminUrl('/link/index')?>">友情链接</a></li>
                                         <li><a href="<?=UrlService::buildAdminUrl('/water/index')?>">文章水印</a></li>
                                         <li><a href="<?=UrlService::buildAdminUrl("/setting/keyword")?>">屏蔽词</a></li>
                                     </ul>
                                 </li>
-
                             </ul>
 
 
