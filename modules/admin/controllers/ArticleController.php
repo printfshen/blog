@@ -137,7 +137,7 @@ class ArticleController extends BaseController
                 $article_model->created_time = $date_time;
             }
             $article_model->c_id = $c_id;
-            $article_model->user_id = $this->current_user->uid;
+            $article_model->user_id = $this->current_user->id;
             $article_model->pic = $pic;
             $article_model->username = $this->current_user->nickname;
             $article_model->title = $title;

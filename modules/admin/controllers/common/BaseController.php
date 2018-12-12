@@ -57,7 +57,7 @@ class BaseController extends BaseWebController
         }
 
         //admin 日志记录
-        AppLogService::addAppLog($this->current_user['uid']);
+        AppLogService::addAppLog($this->current_user['id']);
 
         return true;
     }
@@ -73,13 +73,13 @@ class BaseController extends BaseWebController
         if (!$auth_session) {
             return false;
         }
-        list($auth_token, $uid) = explode("#", $auth_session);
-        if (!$auth_token || !$uid) {
+        list($auth_token, $id) = explode("#", $auth_session);
+        if (!$auth_token || !$id) {
             return false;
         }
 
-        if ($uid && preg_match("/^\d+$/", $uid)) {
-            $user_info = User::findOne(['uid' => $uid, 'status' => 1]);
+        if ($id && preg_match("/^\d+$/", $id)) {
+            $user_info = User::findOne(['id' => $id, 'status' => 1]);
             if (!$user_info) {
                 $this->removeAuthToken();
                 return false;
@@ -110,7 +110,7 @@ class BaseController extends BaseWebController
     public function setLoginStatus($user_info)
     {
         $auth_token = $this->geneAuthToken($user_info);
-        $this->setSession($this->auth_session_name, $auth_token . "#" . $user_info['uid']);
+        $this->setSession($this->auth_session_name, $auth_token . "#" . $user_info['id']);
     }
 
     /**

@@ -69,10 +69,10 @@ class AccountController extends BaseController
     public function actionSet()
     {
         if (\Yii::$app->request->isGet) {
-            $uid = intval($this->get('uid', 0));
+            $id = intval($this->get('id', 0));
             $info = [];
-            if ($uid) {
-                $info = User::findOne(['uid' => $uid]);
+            if ($id) {
+                $info = User::findOne(['id' => $id]);
             }
             return $this->render('set', [
                 'info' => $info
@@ -85,7 +85,7 @@ class AccountController extends BaseController
         $login_pwd = $this->post("login_pwd", "");
         $status = intval($this->post("status", 1));
         $date_now = time();
-        $uid = intval($this->post("uid", 0));
+        $id = intval($this->post("id", 0));
 
         if (!preg_match('/^[a-zA-Z0-9\x{4e00}-\x{9fa5}]{2,20}$/u', $nickname)) {
             return $this->renderJson([], "昵称只支持中文、字母、数字的组合，2-20个字符", -1);
@@ -111,7 +111,7 @@ class AccountController extends BaseController
             return $this->renderJson([], "登陆名已经存在，请重试", -1);
         }
 
-        $info = User::findOne(['uid' => $uid]);
+        $info = User::findOne(['id' => $id]);
         if ($info) {
             $user_model = $info;
         } else {
@@ -142,13 +142,13 @@ class AccountController extends BaseController
      */
     public function actionInfo()
     {
-        $uid = intval($this->get('uid', 0));
+        $id = intval($this->get('id', 0));
         $reback_url = UrlService::buildWebUrl("/account/index");
-        if (!$uid) {
+        if (!$id) {
             return $this->redirect($reback_url);
         }
 
-        $info = User::findOne(['uid' => $uid]);
+        $info = User::findOne(['id' => $id]);
         if (!$info) {
             return $this->redirect($reback_url);
         }
@@ -173,7 +173,7 @@ class AccountController extends BaseController
             return $this->renderJSON([], "操作有误，请重试", -1);
         }
 
-        $info = User::find()->where(['uid' => $id])->one();
+        $info = User::find()->where(['id' => $id])->one();
         if (!$info) {
             return $this->renderJSON([], "指定账号不存在", -1);
         }

@@ -66,7 +66,7 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                     <!---正常数据显示-->
                                     <?php foreach ($list as $_item): ?>
                                         <tr class="text-center">
-                                            <td><?= $_item['uid'] ?></td>
+                                            <td><?= $_item['id'] ?></td>
                                             <td><?= $_item['login_name'] ?></td>
                                             <td><?= $_item['nickname'] ?></td>
                                             <td><?= $_item['mobile'] ?></td>
@@ -77,21 +77,21 @@ StaticService::includeAppJsStatic('/js/admin/account/index.js', AdminAsset::clas
                                             </td>
 
                                             <td>
-                                                <a href="<?= UrlService::buildAdminUrl('/account/info', ['uid' => $_item['uid']]) ?>">
+                                                <a href="<?= UrlService::buildAdminUrl('/account/info', ['id' => $_item['id']]) ?>">
                                                     <i class="fa fa-eye fa-lg"></i>
                                                 </a>
                                                 <a class="m-l"
-                                                   href="<?= UrlService::buildAdminUrl('/account/set', ['uid' => $_item['uid']]) ?>">
+                                                   href="<?= UrlService::buildAdminUrl('/account/set', ['id' => $_item['id']]) ?>">
                                                     <i class="fa fa-edit fa-lg"></i>
                                                 </a>
                                                 <?php if ($_item['status']): ?>
                                                     <a class="m-l remove" href="javascript:void(0);"
-                                                       data="<?= $_item['uid'] ?>">
+                                                       data="<?= $_item['id'] ?>">
                                                         <i class="fa fa-trash fa-lg"></i>
                                                     </a>
                                                 <?php else: ?>
                                                     <a class="m-l recover" href="javascript:void(0);"
-                                                       data="<?= $_item['uid'] ?>">
+                                                       data="<?= $_item['id'] ?>">
                                                         <i class="fa fa-rotate-left fa-lg"></i>
                                                     </a>
                                                 <?php endif; ?>

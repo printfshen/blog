@@ -10,7 +10,7 @@ namespace app\modules\admin\controllers;
 
 
 use app\common\services\UrlService;
-use app\models\user\User;
+use app\models\admin\Admin;
 use app\modules\admin\controllers\common\BaseController;
 
 class UserController extends BaseController
@@ -38,7 +38,7 @@ class UserController extends BaseController
             return $this->renderJS('请填写密码', UrlService::buildAdminUrl('/user/login'));
         }
 
-        $user_model = new User();
+        $user_model = new Admin();
         $user_info = $user_model->getInfo(['login_name' => $login_name]);
         if (!$user_info) {
             return $this->renderJS('用户不存在', UrlService::buildAdminUrl('/user/login'));
