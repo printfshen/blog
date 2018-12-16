@@ -28,7 +28,7 @@ var admin_setting_index_ops = {
             var WebDescription_target = $("#WebDescription");
             var WebDescription = WebDescription_target.val();
 
-            var WebICP_target = $(".admin_setting_index_ops input[name=WebName]");
+            var WebICP_target = $(".admin_setting_index_ops input[name=WebICP]");
             var WebICP = WebICP_target.val();
 
             var WebEmail_target = $(".admin_setting_index_ops input[name=WebEmail]");
