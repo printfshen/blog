@@ -2,8 +2,11 @@
 
 use app\common\services\StaticService;
 use app\assets\AdminAsset;
+use app\common\services\UrlService;
 
 StaticService::includeAppJsStatic("/js/admin/setting/index.js", AdminAsset::className());
+//上传控件
+StaticService::includeAppJsStatic("/plugins/plupload/plupload.full.min.js", AdminAsset::className());
 ?>
 <div id="content-container" class="admin_setting_index_ops">
 
@@ -45,7 +48,8 @@ StaticService::includeAppJsStatic("/js/admin/setting/index.js", AdminAsset::clas
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="WebDescription">网站描述：</label>
                             <div class="col-md-9">
-                                <textarea placeholder="WebDescription" id="WebDescription" name="WebDescription" rows="3"
+                                <textarea placeholder="WebDescription" id="WebDescription" name="WebDescription"
+                                          rows="3"
                                           class="form-control"><?= $info ? $info['WebDescription'] : ""; ?></textarea>
                             </div>
                         </div>
@@ -53,15 +57,56 @@ StaticService::includeAppJsStatic("/js/admin/setting/index.js", AdminAsset::clas
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="WebICP">备案号：</label>
                             <div class="col-md-9">
-                                <input type="text" id="WebICP" name="WebICP" value="<?= $info ? $info['WebICP'] : ""; ?>"
+                                <input type="text" id="WebICP" name="WebICP"
+                                       value="<?= $info ? $info['WebICP'] : ""; ?>"
                                        class="form-control" placeholder="WebICP">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="WebMasterName">站长姓名：</label>
+                            <div class="col-md-9">
+                                <input type="text" id="WebMasterName" name="WebMasterName"
+                                       value="<?= $info ? $info['WebMasterName'] : ""; ?>"
+                                       class="form-control" placeholder="WebMasterName">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label">站长头像：</label>
+                            <div class="col-md-9">
+                                <div id="photos_area" class="photos_area">
+                                    <?php
+                                    if ($info): ?>
+                                        <?php if ($info['WebMasterAvatar']): ?>
+                                            <span class='item' id=''>
+                                        <a class='picture_delete'>×</a>
+                                        <input type=hidden name='pics[]' value='<?= $info['WebMasterAvatar'] ?>'>
+                                                <img src='<?= UrlService::buildPicUrl("config", $info['WebMasterAvatar']); ?>'
+                                                     alt=''/>
+                                    </span>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                    <input type="hidden" name="bucket" value="config"/>
+                                    <a class="cover_btn" id="cover_btn_big"><span>+</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-3 control-label" for="WebMasterSkill">技能点：</label>
+                            <div class="col-md-9">
+                                <input type="text" id="WebMasterSkill" name="WebMasterSkill"
+                                       value="<?= $info ? $info['WebMasterSkill'] : ""; ?>"
+                                       class="form-control" placeholder="WebMasterSkill">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-md-3 control-label" for="WebEmail">站长邮箱：</label>
                             <div class="col-md-9">
-                                <input type="text" id="WebEmail" name="WebEmail" value="<?= $info ? $info['WebEmail'] : ""; ?>"
+                                <input type="text" id="WebEmail" name="WebEmail"
+                                       value="<?= $info ? $info['WebEmail'] : ""; ?>"
                                        class="form-control" placeholder="WebEmail">
                             </div>
                         </div>

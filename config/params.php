@@ -12,5 +12,6 @@ return [
         'timeline' => '/uploads/timeline',
         'article' => '/uploads/article',
         'link' => '/uploads/link',
+        'config' => '/uploads/config',
     ],
 ];
