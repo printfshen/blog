@@ -32,7 +32,7 @@ class ArticleController extends BaseController
         $p = $this->get('p', 1);
         $p = (($p < 1) ? 0 : $p);
 
-        $query = Article::find()->joinWith(['tag']);
+        $query = Article::find()->joinWith(['category']);
         if ($status > ConstantMapService::$status_default) {
             $query->andWhere(['status' => $status]);
         }
