@@ -69,7 +69,7 @@ StaticService::includeAppJsStatic("/js/admin/category/index.js", AdminAsset::cla
                                     <?php foreach ($list as $_item): ?>
                                         <tr class="text-center">
                                             <td><?= $_item['id'] ?></td>
-                                            <td><?= $_item['name'] ?></td>
+                                            <td class="text-left"><?= $_item['_name'] ?></td>
                                             <td><?= $_item['_lev'] ?></td>
                                             <td><?= $_item['keyword'] ?></td>
                                             <td>
