@@ -4,9 +4,8 @@ use app\common\services\StaticService;
 use app\assets\AdminAsset;
 use app\common\services\UrlService;
 
-StaticService::includeAppJsStatic("/plugins/ueditor/ueditor.config.js", \app\assets\WebAsset::className());
-StaticService::includeAppJsStatic("/plugins/ueditor/ueditor.all.min.js", \app\assets\WebAsset::className());
-StaticService::includeAppJsStatic("/plugins/ueditor/lang/zh-cn/zh-cn.js", \app\assets\WebAsset::className());
+StaticService::includeAppCssStatic("/plugins/editor.md/css/editormd.min.css", \app\assets\WebAsset::className());
+StaticService::includeAppJsStatic("/plugins/editor.md/editormd.min.js", \app\assets\WebAsset::className());
 //上传控件
 StaticService::includeAppJsStatic("/plugins/plupload/plupload.full.min.js", AdminAsset::className());
 
@@ -106,16 +105,19 @@ StaticService::includeAppJsStatic("/js/admin/article/set.js", AdminAsset::classN
 
                         <div class="form-group">
                             <div class="col-md-3 control-label">description：</div>
-                            <div class="col-md-9">
-                                    <textarea placeholder="description" name="description" rows="2"
+                            <div class="col-md-9" >
+                                    <textarea placeholder="description" name="description"
+                                              rows="2"
                                               class="form-control"><?= $info ? $info['description'] : ""; ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-3 control-label">内容：</div>
-                            <div class="col-md-9">
-                                <textarea placeholder="content" id="editor" style="height: 400px"><?= $info ? $info['content'] : ""; ?></textarea>
+                            <div class="col-md-9" id="editor">
+                                <textarea  class="form-control" style="display:none;"
+                                        placeholder="content" id="editor"
+                                ><?= $info ? $info['content'] : ""; ?></textarea>
                             </div>
                         </div>
 

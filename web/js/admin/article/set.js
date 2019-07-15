@@ -3,7 +3,8 @@ var admin_article_set_ops = {
     init: function () {
         this.ue = null;
         this.eventBind();
-        this.initEditor();
+        // this.initEditor();
+        this.initMdEditor();
         common_ops.initpPluploadUploader(
             'cover_btn_big',
             common_ops.buildWww('/upload/plupload'),
@@ -141,6 +142,15 @@ var admin_article_set_ops = {
             return false;
         });
     },
+    initMdEditor: function () {
+        var editor = editormd("editor", {
+            width: "74%",
+            height: '740',
+            autoHeight: true,
+            // markdown: "xxxx",     // dynamic set Markdown text
+            path : "/plugins/editor.md/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
+        });
+    }
 };
 $(document).ready(function () {
     admin_article_set_ops.init();

@@ -34,7 +34,7 @@ class ArticleController extends BaseController
 
         $query = Article::find()->joinWith(['category']);
         if ($status > ConstantMapService::$status_default) {
-            $query->andWhere(['status' => $status]);
+            $query->andWhere([Article::tableName() . '.status' => $status]);
         }
 
         if ($mix_kw) {
