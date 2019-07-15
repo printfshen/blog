@@ -82,7 +82,7 @@ StaticService::includeAppJsStatic("/js/admin/account/set.js", AdminAsset::classN
                     <div class="panel-footer">
                         <div class="row">
                             <div class="col-sm-12 text-center">
-                                <input type="hidden" name="uid" value="<?= $info ? $info['id'] : 0 ?>">
+                                <input type="hidden" name="id" value="<?= $info ? $info['id'] : 0 ?>">
                                 <button class="btn btn-mint save">save</button>
                             </div>
                         </div>

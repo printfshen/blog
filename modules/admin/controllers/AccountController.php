@@ -11,6 +11,7 @@ namespace app\modules\admin\controllers;
 
 use app\common\services\ConstantMapService;
 use app\common\services\UrlService;
+use app\models\admin\Admin;
 use app\models\user\User;
 use app\modules\admin\controllers\common\BaseController;
 
@@ -27,7 +28,7 @@ class AccountController extends BaseController
         $p = $this->get('p', 1);
         $p = (($p < 1) ? 0 : $p);
 
-        $query = User::find();
+        $query = Admin::find();
         if ($status > ConstantMapService::$status_default) {
             $query->andWhere(['status' => $status]);
         }
@@ -72,7 +73,7 @@ class AccountController extends BaseController
             $id = intval($this->get('id', 0));
             $info = [];
             if ($id) {
-                $info = User::findOne(['id' => $id]);
+                $info = Admin::findOne(['id' => $id]);
             }
             return $this->render('set', [
                 'info' => $info
@@ -105,17 +106,17 @@ class AccountController extends BaseController
         if (!in_array($status, [0, 1])) {
             return $this->renderJson([], ConstantMapService::$default_error, -1);
         }
-        $has_in = User::find()->where(['login_name' => $login_name])
+        $has_in = Admin::find()->where(['login_name' => $login_name])
             ->andWhere(['<>', 'login_name', $login_name])->count();
         if ($has_in) {
             return $this->renderJson([], "登陆名已经存在，请重试", -1);
         }
 
-        $info = User::findOne(['id' => $id]);
+        $info = Admin::findOne(['id' => $id]);
         if ($info) {
             $user_model = $info;
         } else {
-            $user_model = new User();
+            $user_model = new Admin();
             $user_model->setSalt();
             $user_model->created_time = $date_now;
         }
@@ -148,7 +149,7 @@ class AccountController extends BaseController
             return $this->redirect($reback_url);
         }
 
-        $info = User::findOne(['id' => $id]);
+        $info = Admin::findOne(['id' => $id]);
         if (!$info) {
             return $this->redirect($reback_url);
         }
@@ -173,7 +174,7 @@ class AccountController extends BaseController
             return $this->renderJSON([], "操作有误，请重试", -1);
         }
 
-        $info = User::find()->where(['id' => $id])->one();
+        $info = Admin::find()->where(['id' => $id])->one();
         if (!$info) {
             return $this->renderJSON([], "指定账号不存在", -1);
         }

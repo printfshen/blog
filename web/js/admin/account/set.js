@@ -21,7 +21,7 @@ var admin_account_set_ops = {
 
             var status = clickCheckbox.checked ? 1 : 0;
 
-            var uid = $(".admin_account_set_ops input[name=uid]").val();
+            var id = $(".admin_account_set_ops input[name=id]").val();
 
             var nickname_target = $(".admin_account_set_ops input[name=nickname]");
             var nickname = nickname_target.val();
@@ -56,13 +56,13 @@ var admin_account_set_ops = {
             }
             if (login_pwd.length < 5 || login_pwd.length > 20) {
                 common_ops.tip("请输入5-20位的密码", login_pwd_target);
-                return
+                return;
             }
             btn_target.addClass("disabled");
             $.ajax({
                 url: common_ops.buildAdmin("/account/set"),
                 data: {
-                    uid: uid,
+                    id: id,
                     nickname: nickname,
                     mobile: mobile,
                     email: email,

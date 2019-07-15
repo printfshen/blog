@@ -72,6 +72,23 @@ class Admin extends \yii\db\ActiveRecord
     {
         return md5(md5($password) . md5($this->login_salt));
     }
+    public function setPassword( $password ) {
+
+        $this->login_pwd = $this->getSaltPassword($password);
+    }
+    /**
+     * 生成加密盐
+     * @param int $length
+     */
+    public function setSalt($length = 16)
+    {
+        $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*";
+        $salt = '';
+        for ($i = 0; $i < $length; $i++) {
+            $salt .= $chars[mt_rand(0, strlen($chars) - 1)];
+        }
+        $this->login_salt = $salt;
+    }
     /**
      * {@inheritdoc}
      */
