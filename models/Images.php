@@ -28,8 +28,8 @@ class Images extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_time'], 'required'],
-            [['created_time'], 'integer'],
+            [['created_time', 'updated_time'], 'required'],
+            [['created_time', 'updated_time'], 'integer'],
             [['bucket'], 'string', 'max' => 20],
             [['file_key'], 'string', 'max' => 60],
         ];

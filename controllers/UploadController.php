@@ -44,4 +44,57 @@ class UploadController extends BaseWebController
             echo json_encode(array("error" => "上传有误，清检查服务器配置！"));
         }
     }
+
+    /**
+     * editor.md上传
+     * {
+     * success : 0 | 1, //0表示上传失败;1表示上传成功
+     * message : "提示的信息",
+     * url     : "图片地址" //上传成功时才返回
+     * }
+     * @return string
+     */
+    public function actionEditorMdUpload()
+    {
+        $bucket = $this->post('bucket', 'article');
+        $type = $this->post('type');
+
+        $files = $_FILES['editormd-image-file'];
+        if (!$_FILES || !isset($files)) {
+            return json_encode([
+                'success' => 0,
+                'message' => '没有选择文件',
+                'url' => ''
+            ]);
+        }
+
+        $file_name = $files['name'];
+
+        $tmp_file_extend = explode(".", $file_name);
+        if (!in_array(strtolower(end($tmp_file_extend)), $this->allow_file)) {
+            return json_encode([
+                'success' => 0,
+                'message' => '上传格式有问题,请重新上传',
+                'url' => ''
+            ]);
+        }
+
+        $ret = UploadService::uploadByFile($file_name, $files['tmp_name'], $bucket);
+
+        if ($ret['code'] == 200) {
+            $path = UrlService::buildPicUrl($bucket, $ret['path']);
+            return json_encode([
+                'success' => 1,
+                'message' => '没有选择文件',
+                'url' => $path
+            ]);
+            echo json_encode(array("error" => "0", "src" => $path, "name" => $ret['path']));
+        } else {
+            return json_encode([
+                'success' => 0,
+                'message' => '上传有误，清检查服务器配置！',
+                'url' => ''
+            ]);
+        }
+    }
 }

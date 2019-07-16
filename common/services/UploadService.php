@@ -81,6 +81,7 @@ class UploadService extends BaseService
         $model_image->bucket = $bucket;
         $model_image->file_key = $file_key;
         $model_image->created_time = time();
+        $model_image->updated_time = time();
         return $model_image->save(0);
     }
 }

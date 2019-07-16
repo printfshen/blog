@@ -2,6 +2,7 @@
 var admin_article_set_ops = {
     init: function () {
         this.ue = null;
+        this.editorMd = null
         this.eventBind();
         // this.initEditor();
         this.initMdEditor();
@@ -33,6 +34,7 @@ var admin_article_set_ops = {
             status_tmp = document.querySelector(".status"),
             clickButton = document.querySelector(".save");
         clickButton.addEventListener("click", function () {
+
             var btn_target = $(this);
             if (btn_target.hasClass("disabled")) {
                 common_ops.alert("正在处理!!请不要重复提交");
@@ -66,7 +68,7 @@ var admin_article_set_ops = {
             var description_target = $(".admin_article_set_ops [name=description]");
             var description = description_target.val();
 
-            var content = that.ue.getContent();
+            var content = that.editorMd.getMarkdown();
 
             var is_top = is_top_tmp.checked ? 1 : 0;
             var is_original = is_original_tmp.checked ? 1 : 0;
@@ -143,13 +145,33 @@ var admin_article_set_ops = {
         });
     },
     initMdEditor: function () {
-        var editor = editormd("editor", {
+        var that = this;
+        var editorMd = editormd("editor", {
             width: "74%",
-            height: '740',
-            autoHeight: true,
+            height: 640,
+            flowChart: true,
+            codeFold : true,
+            // autoHeight: true,
             // markdown: "xxxx",     // dynamic set Markdown text
-            path : "/plugins/editor.md/lib/"  // Autoload modules mode, codemirror, marked... dependents libs path
+            path: "/plugins/editor.md/lib/",  // Autoload modules mode, codemirror, marked... dependents libs path
+            imageUpload: true,
+            imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
+            imageUploadURL: common_ops.buildWww('/upload/editor-md-upload'),
+            onload: function () {
+                editormd.loadPlugin(common_ops.buildWww('/js/admin/article/editor-img-paste'), function () {
+                    editorMd.imagePaste();
+                });
+                //this.fullscreen();
+                //this.unwatch();
+                //this.watch().fullscreen();
+                //this.setMarkdown("#PHP");
+                //this.width("100%");
+                //this.height(480);
+                //this.resize("100%", 640);
+            }
         });
+
+        that.editorMd = editorMd;
     }
 };
 $(document).ready(function () {
