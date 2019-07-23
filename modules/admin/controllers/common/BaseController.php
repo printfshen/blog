@@ -12,7 +12,7 @@ namespace app\modules\admin\controllers\common;
 use app\common\components\BaseWebController;
 use app\common\services\applog\AppLogService;
 use app\common\services\UrlService;
-use app\models\user\User;
+use app\models\admin\Admin;
 
 class BaseController extends BaseWebController
 {
