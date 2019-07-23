@@ -79,7 +79,7 @@ class BaseController extends BaseWebController
         }
 
         if ($id && preg_match("/^\d+$/", $id)) {
-            $user_info = User::findOne(['id' => $id, 'status' => 1]);
+            $user_info = Admin::findOne(['id' => $id, 'status' => 1]);
             if (!$user_info) {
                 $this->removeAuthToken();
                 return false;
